@@ -6,7 +6,7 @@ namespace SushiLushi
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!fdhdjfh");
+            Console.WriteLine("Hello World!");
         }
     }
 }
