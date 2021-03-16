@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/nick/Workspace/Main-Project/SushiLushi/SushiLushi.csproj": {}
+    "C:\\Users\\Dejan\\Desktop\\Project B Code\\Main-Project\\SushiLushi\\SushiLushi.csproj": {}
   },
   "projects": {
-    "/home/nick/Workspace/Main-Project/SushiLushi/SushiLushi.csproj": {
+    "C:\\Users\\Dejan\\Desktop\\Project B Code\\Main-Project\\SushiLushi\\SushiLushi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/nick/Workspace/Main-Project/SushiLushi/SushiLushi.csproj",
+        "projectUniqueName": "C:\\Users\\Dejan\\Desktop\\Project B Code\\Main-Project\\SushiLushi\\SushiLushi.csproj",
         "projectName": "SushiLushi",
-        "projectPath": "/home/nick/Workspace/Main-Project/SushiLushi/SushiLushi.csproj",
-        "packagesPath": "/home/nick/.nuget/packages/",
-        "outputPath": "/home/nick/Workspace/Main-Project/SushiLushi/obj/",
+        "projectPath": "C:\\Users\\Dejan\\Desktop\\Project B Code\\Main-Project\\SushiLushi\\SushiLushi.csproj",
+        "packagesPath": "C:\\Users\\Dejan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dejan\\Desktop\\Project B Code\\Main-Project\\SushiLushi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/nick/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Dejan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -52,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
