@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nick\\Desktop\\Main-Project\\SushiLushi\\SushiLushi\\SushiLushi.csproj": {}
+    "/home/nick/Workspace/Main-Project/SushiLushi/SushiLushi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nick\\Desktop\\Main-Project\\SushiLushi\\SushiLushi\\SushiLushi.csproj": {
+    "/home/nick/Workspace/Main-Project/SushiLushi/SushiLushi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nick\\Desktop\\Main-Project\\SushiLushi\\SushiLushi\\SushiLushi.csproj",
+        "projectUniqueName": "/home/nick/Workspace/Main-Project/SushiLushi/SushiLushi.csproj",
         "projectName": "SushiLushi",
-        "projectPath": "C:\\Users\\Nick\\Desktop\\Main-Project\\SushiLushi\\SushiLushi\\SushiLushi.csproj",
-        "packagesPath": "C:\\Users\\Nick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nick\\Desktop\\Main-Project\\SushiLushi\\SushiLushi\\obj\\",
+        "projectPath": "/home/nick/Workspace/Main-Project/SushiLushi/SushiLushi.csproj",
+        "packagesPath": "/home/nick/.nuget/packages/",
+        "outputPath": "/home/nick/Workspace/Main-Project/SushiLushi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Nick\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/nick/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -54,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }
