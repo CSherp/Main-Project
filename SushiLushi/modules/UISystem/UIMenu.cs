@@ -15,6 +15,8 @@ namespace UISystem
         }
 
         public void Display() {
+            Console.WriteLine("");
+
             for (int i = 0; i < Options.Count; i++)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -24,6 +26,7 @@ namespace UISystem
             }
             
             Console.WriteLine("");
+            
             int choice = Input.ReadInt("Selecteer een keuze:", min: 1, max: Options.Count);
             Options[choice - 1].Callback();
         }
