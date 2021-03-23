@@ -23,7 +23,8 @@ namespace UISystem
                 Console.Write(Options[i].Name + "\n");
             }
             
-            int choice = Input.ReadInt("Kies een optie:", min: 1, max: Options.Count);
+            Console.WriteLine("");
+            int choice = Input.ReadInt("Selecteer een keuze:", min: 1, max: Options.Count);
             Options[choice - 1].Callback();
         }
 

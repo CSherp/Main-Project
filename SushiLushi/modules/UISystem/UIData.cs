@@ -14,7 +14,7 @@ namespace UISystem {
 
             while (value < min || value > max)
             {
-                Output.DisplayPrompt("Kies een optie ({0} t/m {1}):", min, max);
+                Output.DisplayPrompt("Selecteer een keuze ({0} t/m {1}):", min, max);
                 value = ReadInt();
             }
 
@@ -27,7 +27,7 @@ namespace UISystem {
 
             while (!int.TryParse(input, out value))
             {
-                Output.DisplayPrompt("Kies een optie (getal):");
+                Output.DisplayPrompt("Selecteer een keuze (getal):");
                 input = Console.ReadLine();
             }
 

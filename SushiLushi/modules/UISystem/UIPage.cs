@@ -10,7 +10,17 @@ namespace UISystem {
 
         public void Update () {
             Console.Clear();
-            Console.Title = this.Title;
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("================[ ");
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write(this.Title);
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(" ]================\n");
+
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }   
 }
