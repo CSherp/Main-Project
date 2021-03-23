@@ -6,7 +6,8 @@ namespace SushiLushi
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!123");
+            Screen.init();
+            StartScreen.init();
         }
     }
 }
