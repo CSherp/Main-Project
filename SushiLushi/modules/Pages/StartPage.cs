@@ -24,10 +24,10 @@ namespace SushiLushi {
             Console.WriteLine(".s-````````````````````````````````````````````````````````````````````````````````````-s.");
             Console.WriteLine("`/::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::/`");
             Console.WriteLine("                                                                                          ");
-            Console.WriteLine("     ``                 `  `               `..`               `  `               `-`      ");
-            Console.WriteLine("     ..                 :  .               -..               `-``-                /       ");
-            Console.WriteLine("     ..                 : `-               ```:              `-  -                :       ");
-            Console.WriteLine("      .``                .`                 ..                `  `               `.`      ");
+            Console.WriteLine(" :+                  .+- :+`               .+oo+                -+. /+                :+` ");
+            Console.WriteLine(" sd`                 -d: od`               /do/.                /d+:hd                +d. ");
+            Console.WriteLine(" sd.``               -d+`sd`               `-/yh.               /d/-hd                +d. ");
+            Console.WriteLine(" -oo+:                /ooo:                -ooo+                -o. +o                :o` ");
             Console.WriteLine("");
             UISystem.Output.WriteLine(System.ConsoleColor.White, "Welkom bij Sushi Lushi!");
 
