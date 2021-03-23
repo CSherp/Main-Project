@@ -6,8 +6,7 @@ namespace SushiLushi
     {
         static void Main(string[] args)
         {
-            Screen.init();
-            StartScreen.init();
+            StartPage.Display();
         }
     }
 }
