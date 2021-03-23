@@ -5,7 +5,7 @@ namespace SushiLushi {
         public static UISystem.Page page = new UISystem.Page("Start Page");
 
         public static void Display () {
-            page.Update();
+            page.Update(false);
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("");

@@ -8,19 +8,22 @@ namespace UISystem {
             this.Title = title;
         }
 
-        public void Update () {
+        public void Update (Boolean header = true) {
             Console.Clear();
+            
+            if (header) {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("================================[ ");
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("================[ ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write(this.Title);
 
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write(this.Title);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(" ]================================\n");
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write(" ]================\n");
-
-            Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
+            
         }
     }   
 }
