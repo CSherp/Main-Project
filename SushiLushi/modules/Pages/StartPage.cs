@@ -33,7 +33,8 @@ namespace SushiLushi {
 
             var menu = new UISystem.Menu()
                 .Add("test", () => UISystem.Output.WriteLine("hello!"))
-                .Add("login", LoginPage.Display);
+                .Add("login", LoginPage.Display)
+                .Add("registreren", RegisterPage.Display);
 
             menu.Display();
         }   
