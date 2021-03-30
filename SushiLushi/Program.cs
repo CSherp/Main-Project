@@ -6,7 +6,11 @@ namespace SushiLushi
     {
         static void Main(string[] args)
         {
-            StartPage.Display();
+            // Initialiseer storage systeem
+            Storage.System.InitStorage();
+
+            // Open startpage
+            // StartPage.Display();
         }
     }
 }
