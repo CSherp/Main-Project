@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "firstname": "admin",
-      "lastname": "admin",
+      "username": "admin",
+      "email": "admin",
       "password": "12345",
       "role": "admin"
     }

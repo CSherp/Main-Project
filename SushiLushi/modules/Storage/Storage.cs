@@ -9,31 +9,39 @@ namespace Storage {
     public class SushiLushiData {
         // List van alle geregistreerde accounts
         public List<User> users;
+
+        // Constructor
+        public SushiLushiData() {
+            users = new List<User>();   
+        }
     }
 
     public static class System {
-
         // Maak een nieuw SushiLushiData object aan
-        public static SushiLushiData Data = new SushiLushiData();
+        public static SushiLushiData data;
 
-        // Globale json bestand
+        // Globale json bestandsnaam
         private static string mainStorageFile = @"./sushi-lushi-data.json";
 
-        public static void InitStorage() {
+        // Constructor
+        static System() {
+            data = new SushiLushiData();
+        }
 
+        public static void InitStorage() {
             // Check of het mainstorage bestand bestaat. zo niet maak hem dan aan.
             if(!File.Exists(mainStorageFile)) {
                 
                 // Initialiseer nieuwe admin user
                 User adminUser = new User() {
-                    firstname = "admin",
-                    lastname = "admin",
+                    username = "admin",
+                    email = "admin",
                     password = "12345",
                     role = "admin"
                 };
                 
                 // Voeg admin user toe aan data user list
-                Data.users.Add(adminUser);
+                System.data.users.Add(adminUser);
 
                 // Call save storage om huidige data op te slaan
                 SaveStorage();
@@ -59,7 +67,7 @@ namespace Storage {
             };
 
             // Zet de SushiLushiData object om naar json (serialize)
-            string jsonTextData = JsonSerializer.Serialize<SushiLushiData>(Data, options);
+            string jsonTextData = JsonSerializer.Serialize<SushiLushiData>(data, options);
             
             // Maak bestand aan en zet de serialized data er in
             File.WriteAllText(mainStorageFile, jsonTextData);
@@ -70,7 +78,7 @@ namespace Storage {
             // Laad alle json data in van het bestand
             string jsonTextData = File.ReadAllText(mainStorageFile);
 
-            // Console.WriteLine(jsonTextData);
+            Console.WriteLine(jsonTextData);
 
             // Json opties zodat fields ook worden deserialized
             var options = new JsonSerializerOptions
@@ -79,8 +87,7 @@ namespace Storage {
             };
 
             // Zet de jsondata om naar een SushiLushiData object (deserialize)
-            SushiLushiData Data = JsonSerializer.Deserialize<SushiLushiData>(jsonTextData, options);
-            
+            System.data = JsonSerializer.Deserialize<SushiLushiData>(jsonTextData, options);
         }
 
     }

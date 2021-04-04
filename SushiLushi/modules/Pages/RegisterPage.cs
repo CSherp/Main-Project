@@ -44,11 +44,26 @@ namespace SushiLushi {
             string repeatPassword = Console.ReadLine();
 
             while(password != repeatPassword){
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("De wachtwoorden komen niet overeen. Probeer nogmaals:");
-            Console.ResetColor();
-            repeatPassword = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("De wachtwoorden komen niet overeen. Probeer nogmaals:");
+                Console.ResetColor();
+                repeatPassword = Console.ReadLine();
             }
+            
+            // Maak nieuw user object aan
+            // Stel de gegevens in (properties)
+            Storage.User newUser = new Storage.User() {
+                username = username,
+                email = email,
+                password = password,
+                role = "user"
+            };
+
+            // Voeg toe aan storge user list
+            Storage.System.data.users.Add(newUser);
+
+            // Sla de huidige gegevens op
+            Storage.System.SaveStorage();
         }
     }
 }
