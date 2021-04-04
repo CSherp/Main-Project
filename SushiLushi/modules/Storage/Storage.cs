@@ -70,7 +70,7 @@ namespace Storage {
             // Laad alle json data in van het bestand
             string jsonTextData = File.ReadAllText(mainStorageFile);
 
-            Console.WriteLine(jsonTextData);
+            // Console.WriteLine(jsonTextData);
 
             // Json opties zodat fields ook worden deserialized
             var options = new JsonSerializerOptions
