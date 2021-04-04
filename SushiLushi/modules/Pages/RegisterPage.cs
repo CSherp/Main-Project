@@ -12,7 +12,6 @@ namespace SushiLushi {
 
             menu.Display();
 
-
         }
 
         private static void GoToStart() {
