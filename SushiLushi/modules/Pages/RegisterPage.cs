@@ -38,6 +38,9 @@ namespace SushiLushi {
             var username = Console.ReadLine();
 
             Console.WriteLine("Voer uw wachtwoord in:");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("LET OP: hoofdletter gevoelig");
+            Console.ResetColor();
             var password = Console.ReadLine();
             
             Console.WriteLine("Voer uw wachtwoord nogmaals in:");

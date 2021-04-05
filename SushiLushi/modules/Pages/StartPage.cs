@@ -32,9 +32,10 @@ namespace SushiLushi {
             UISystem.Output.WriteLine(System.ConsoleColor.White, "Welkom bij Sushi Lushi!");
 
             var menu = new UISystem.Menu()
-                .Add("login", LoginPage.Display)
-                .Add("registreren", RegisterPage.Display)
-                .Add("reserveren", ReserveerPage.Display);
+                .Add("Inloggen", LoginPage.Display)
+                .Add("Registreren", RegisterPage.Display)
+                .Add("Reserveren", ReserveerPage.Display)
+                .Add("Menu", Menulijst.Display);
 
             menu.Display();
         }   
