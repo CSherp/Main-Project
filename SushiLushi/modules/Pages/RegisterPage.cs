@@ -18,15 +18,18 @@ namespace SushiLushi {
             StartPage.Display();
         }
         private static void Register() {
+            // Wordt gevraagd om invoeren van email
             Console.WriteLine("Voer uw mail in:");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
             var email = Console.ReadLine();
-
+            
+            // Wordt gevraagd om nogmaals invoeren van email
             Console.WriteLine("Voer uw mail nogmaals in");
             string repeatEmail = Console.ReadLine();
 
+            // Als de 2e mail niet overeen komt geeft deze foutmelding
             while(email != repeatEmail){
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("De mailadressen komen niet overeen. Probeer nogmaals:");
@@ -34,18 +37,22 @@ namespace SushiLushi {
             repeatEmail = Console.ReadLine();
             }
 
+            // Wordt gevraagd om invoeren van gebruikersnaam
             Console.WriteLine("Voer uw gebruikersnaam in:");
             var username = Console.ReadLine();
 
+            // Wordt gevraagd om invoeren van wachtwoord
             Console.WriteLine("Voer uw wachtwoord in:");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
             var password = Console.ReadLine();
             
+            // Wordt gevraagd om nogmaals invoeren van wachtwoord
             Console.WriteLine("Voer uw wachtwoord nogmaals in:");
             string repeatPassword = Console.ReadLine();
 
+            // Als de 2e wachtwoord niet overeen komt geeft deze foutmelding
             while(password != repeatPassword){
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("De wachtwoorden komen niet overeen. Probeer nogmaals:");
