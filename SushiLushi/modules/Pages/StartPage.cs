@@ -33,7 +33,6 @@ namespace SushiLushi {
             UISystem.Output.WriteLine(System.ConsoleColor.White, "Maak uw keuze!");
             UISystem.Output.WriteLine(System.ConsoleColor.White, "--------------------------");
             var menu = new UISystem.Menu()
-                .Add("Test", () => UISystem.Output.WriteLine("Dit is een test! :D"))
                 .Add("Login", LoginPage.Display)
                 .Add("Registreren", RegisterPage.Display)
                 .Add("Reserveren", ReserveerPage.Display);

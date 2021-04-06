@@ -7,17 +7,73 @@ namespace SushiLushi {
             page.Update();
 
             var menu = new UISystem.Menu()
-                .Add("registreren!", () => Console.WriteLine("test123"))
-                .Add("ik wil terug naar start!", GoToStart);
+                .Add("Registreren", Register)
+                .Add("Terug naar startpagina", GoToStart);
 
             menu.Display();
-
-            Console.WriteLine("Hallo dingen enzo");
 
         }
 
         private static void GoToStart() {
             StartPage.Display();
+        }
+        private static void Register() {
+            // Wordt gevraagd om invoeren van email
+            Console.WriteLine("Voer uw mail in:");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("LET OP: hoofdletter gevoelig");
+            Console.ResetColor();
+            var email = Console.ReadLine();
+            
+            // Wordt gevraagd om nogmaals invoeren van email
+            Console.WriteLine("Voer uw mail nogmaals in");
+            string repeatEmail = Console.ReadLine();
+
+            // Als de 2e mail niet overeen komt geeft deze foutmelding
+            while(email != repeatEmail){
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("De mailadressen komen niet overeen. Probeer nogmaals:");
+            Console.ResetColor();
+            repeatEmail = Console.ReadLine();
+            }
+
+            // Wordt gevraagd om invoeren van gebruikersnaam
+            Console.WriteLine("Voer uw gebruikersnaam in:");
+            var username = Console.ReadLine();
+
+            // Wordt gevraagd om invoeren van wachtwoord
+            Console.WriteLine("Voer uw wachtwoord in:");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("LET OP: hoofdletter gevoelig");
+            Console.ResetColor();
+            var password = Console.ReadLine();
+            
+            // Wordt gevraagd om nogmaals invoeren van wachtwoord
+            Console.WriteLine("Voer uw wachtwoord nogmaals in:");
+            string repeatPassword = Console.ReadLine();
+
+            // Als de 2e wachtwoord niet overeen komt geeft deze foutmelding
+            while(password != repeatPassword){
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("De wachtwoorden komen niet overeen. Probeer nogmaals:");
+                Console.ResetColor();
+                repeatPassword = Console.ReadLine();
+            }
+            
+            // Maak nieuw user object aan
+            // Stel de gegevens in (properties)
+            Storage.User newUser = new Storage.User() {
+                username = username,
+                email = email,
+                password = password,
+                role = "user"
+            };
+
+            // Voeg toe aan storge user list
+            Storage.System.data.users.Add(newUser);
+
+            // Sla de huidige gegevens op
+            Storage.System.SaveStorage();
         }
     }
 }
