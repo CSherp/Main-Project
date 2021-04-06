@@ -25,13 +25,14 @@ namespace SushiLushi {
             Console.ResetColor();
             var email = Console.ReadLine();
             
+            // Als er geen geldige mail wordt ingevoerd komt er een foutmelding
             while(!(email.Contains('@') && email.Contains('.'))){
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Voer een geldig mailadres in:");
                 Console.ResetColor();
                 email = Console.ReadLine();
             }
-            
+
             // Wordt gevraagd om nogmaals invoeren van email
             Console.WriteLine("Voer uw mail nogmaals in");
             string repeatEmail = Console.ReadLine();
