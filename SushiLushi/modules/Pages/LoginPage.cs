@@ -30,9 +30,11 @@ namespace SushiLushi {
 
         private static bool AccountCheck(string username, string password) {
             foreach(Storage.User user in Storage.System.data.users) {
-    
+                if (username == user.username) {
+                    return true;
+                }   
             }
-            
+            return false;
         }
     }
 }
