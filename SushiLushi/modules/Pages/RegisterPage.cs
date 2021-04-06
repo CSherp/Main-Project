@@ -25,16 +25,23 @@ namespace SushiLushi {
             Console.ResetColor();
             var email = Console.ReadLine();
             
+            while(!(email.Contains('@') && email.Contains('.'))){
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Voer een geldig mailadres in:");
+                Console.ResetColor();
+                email = Console.ReadLine();
+            }
+            
             // Wordt gevraagd om nogmaals invoeren van email
             Console.WriteLine("Voer uw mail nogmaals in");
             string repeatEmail = Console.ReadLine();
 
             // Als de 2e mail niet overeen komt geeft deze foutmelding
             while(email != repeatEmail){
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("De mailadressen komen niet overeen. Probeer nogmaals:");
-            Console.ResetColor();
-            repeatEmail = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("De mailadressen komen niet overeen. Probeer nogmaals:");
+                Console.ResetColor();
+                repeatEmail = Console.ReadLine();
             }
 
             // Wordt gevraagd om invoeren van gebruikersnaam
