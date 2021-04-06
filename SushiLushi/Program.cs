@@ -10,7 +10,7 @@ namespace SushiLushi
             Storage.System.InitStorage();
 
             // Open startpage
-            StartPage.Display();
+            RegisterPage.Display();
         }
     }
 }
