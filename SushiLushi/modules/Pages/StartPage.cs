@@ -29,14 +29,15 @@ namespace SushiLushi {
             Console.WriteLine(" sd.``               -d+`sd`               `-/yh.               /d/-hd                +d. ");
             Console.WriteLine(" -oo+:                /ooo:                -ooo+                -o. +o                :o` ");
             Console.WriteLine("");
-            UISystem.Output.WriteLine(System.ConsoleColor.White, "Welkom bij Sushi Lushi!");
-
+            UISystem.Output.WriteLine(System.ConsoleColor.White, "Welkom bij Sushi Lushi, het beste Sushi Restaurant in de wereld!");
+            UISystem.Output.WriteLine(System.ConsoleColor.White, "Maak uw keuze!");
+            UISystem.Output.WriteLine(System.ConsoleColor.White, "--------------------------");
             var menu = new UISystem.Menu()
-                .Add("test", () => UISystem.Output.WriteLine("hello!"))
-                .Add("login", LoginPage.Display)
-                .Add("registreren", RegisterPage.Display)
-                .Add("reserveren", ReserveerPage.Display);
-
+                .Add("Test", () => UISystem.Output.WriteLine("Dit is een test! :D"))
+                .Add("Login", LoginPage.Display)
+                .Add("Registreren", RegisterPage.Display)
+                .Add("Reserveren", ReserveerPage.Display);
+            
             menu.Display();
         }   
     }
