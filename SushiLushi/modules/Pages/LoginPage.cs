@@ -18,6 +18,9 @@ namespace SushiLushi {
             StartPage.Display();
         }
 
+        private static void GoToLoading() {
+            
+        }
         private static void Inloggen() {
             Console.WriteLine("Gebruikersnaam:");
             var username = Console.ReadLine();
@@ -26,15 +29,30 @@ namespace SushiLushi {
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
             var password = Console.ReadLine();
+            bool Check = AccountCheck(username, password);
+            if (Check) {
+                StartPage.Display();
+            } else {
+                LoginPage.Display();
+            }
         }
 
         private static bool AccountCheck(string username, string password) {
+            bool Usercheck = false;
+            bool Passcheck = false;
             foreach(Storage.User user in Storage.System.data.users) {
                 if (username == user.username) {
-                    return true;
+                    Usercheck = true;
                 }   
+                if (password == user.password) {
+                    Passcheck = true;
+                }
+            }
+            if (Usercheck && Passcheck) {
+                return true;
             }
             return false;
         }
+
     }
 }
