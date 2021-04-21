@@ -17,15 +17,17 @@ namespace SushiLushi {
         private static void GoToStart() {
             StartPage.Display();
         }
-        private static void Register() {
+        public static void Register() {
             page.Update();
             Console.WriteLine("");
             // Wordt gevraagd om invoeren van email
             Console.WriteLine("Voer uw mail in:");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("LET OP: hoofdletter gevoelig");
-            Console.ResetColor();
-            var email = Console.ReadLine();
+            var email = Console.ReadLine().ToLower();
+            while(!RegisterPage.Check(email)){
+                page.Update();
+                Console.WriteLine("Dit mailadres is al in gebruik. Probeer nogmaals: ");
+                email = Console.ReadLine().ToLower();
+            }
             
             // Als er geen geldige mail wordt ingevoerd komt er een foutmelding
             while(!(email.Contains('@') && email.Contains('.')) || email.Contains(' ')){
@@ -33,7 +35,7 @@ namespace SushiLushi {
                 Console.WriteLine("");
                 Console.WriteLine("Mailadres niet geldig. Probeer nogmaals:");
                 Console.ResetColor();
-                email = Console.ReadLine();
+                email = Console.ReadLine().ToLower();
             }
 
             Console.WriteLine("");
@@ -47,7 +49,7 @@ namespace SushiLushi {
                 Console.WriteLine("");
                 Console.WriteLine("De mailadressen komen niet overeen. Probeer nogmaals:");
                 Console.ResetColor();
-                repeatEmail = Console.ReadLine();
+                repeatEmail = Console.ReadLine().ToLower();
             }
 
             page.Update();
@@ -58,6 +60,14 @@ namespace SushiLushi {
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
             var username = Console.ReadLine();
+            while(!RegisterPage.Check(username)){
+                page.Update();
+                Console.WriteLine("Deze gebruikersnaam is al in gebruik. Probeer nogmaals: ");
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("LET OP: hoofdletter gevoelig");
+                Console.ResetColor();
+                username = Console.ReadLine(); 
+            }
 
             while(username.Contains(' ')){
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -115,9 +125,9 @@ namespace SushiLushi {
                 Console.WriteLine("De wachtwoorden komen niet overeen. Probeer nogmaals:");
                 Console.ResetColor();
                 repeatPassword = Console.ReadLine();
+
             }
-
-
+            LoginPage.Display();
             // Maak nieuw user object aan
             // Stel de gegevens in (properties)
             Storage.User newUser = new Storage.User() {
@@ -132,6 +142,13 @@ namespace SushiLushi {
 
             // Sla de huidige gegevens op
             Storage.System.SaveStorage();
+        }
+        public static bool Check(string user){
+            foreach(Storage.User gebruiker in Storage.System.data.users) {
+                if(gebruiker.email == user || gebruiker.username == user)
+                    return false;
+            }
+            return true;
         }
     }
 }
