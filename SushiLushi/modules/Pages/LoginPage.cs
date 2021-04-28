@@ -18,7 +18,7 @@ namespace SushiLushi {
             StartPage.Display();
         }
 
-        private static void Inloggen() {
+        public static void Inloggen() {
             Console.WriteLine("Gebruikersnaam:");
             var username = Console.ReadLine();
             Console.WriteLine("Wachtwoord:");
