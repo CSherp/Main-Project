@@ -35,7 +35,8 @@ namespace SushiLushi {
             var menu = new UISystem.Menu()
                 .Add("Login", LoginPage.Display)
                 .Add("Registreren", RegisterPage.Display)
-                .Add("Reserveren", ReserveerPage.Display);
+                .Add("Reserveren", ReserveerPage.Display)
+                .Add("Menulijst", MenuList.Display);
             
             menu.Display();
         }   
