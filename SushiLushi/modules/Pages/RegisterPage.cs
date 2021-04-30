@@ -41,7 +41,7 @@ namespace SushiLushi {
             Console.WriteLine("");
             // Wordt gevraagd om nogmaals invoeren van email
             Console.WriteLine("Voer uw mail nogmaals in");
-            string repeatEmail = Console.ReadLine();
+            string repeatEmail = Console.ReadLine().ToLower();
 
             // Als de 2e mail niet overeen komt geeft deze foutmelding
             while(email != repeatEmail){
@@ -127,7 +127,7 @@ namespace SushiLushi {
                 repeatPassword = Console.ReadLine();
 
             }
-            LoginPage.Display();
+            
             // Maak nieuw user object aan
             // Stel de gegevens in (properties)
             Storage.User newUser = new Storage.User() {
@@ -142,6 +142,7 @@ namespace SushiLushi {
 
             // Sla de huidige gegevens op
             Storage.System.SaveStorage();
+            LoginPage.Display();
         }
         public static bool Check(string user){
             foreach(Storage.User gebruiker in Storage.System.data.users) {
