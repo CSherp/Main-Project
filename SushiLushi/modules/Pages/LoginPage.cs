@@ -8,8 +8,11 @@ namespace SushiLushi {
 
             var menu = new UISystem.Menu()
                 .Add("Inloggen", Inloggen)
-                .Add("Terug naar startpagina", GoToStart);
-                // .Add("Inloggen als personeel", InloggenPersoneel);
+                .Add("Terug naar startpagina", GoToStart)
+                .Add("Inloggen als personeel", InloggenPersoneel);
+                // .Add("Doorgaan als gast", DoorgaanGast);
+                // Deze functie kan beter bij reserveren staan, Gast kan je alleen reserveren
+                // Gast kan niet naar dashboard ivm geen account.
 
             menu.Display();
         }
@@ -18,41 +21,95 @@ namespace SushiLushi {
             StartPage.Display();
         }
 
-        private static void GoToLoading() {
+        private static void GoToDash() {
+            Dashboard.Display();
+        }
+
+        private static void TryAgain(string Keuze) {
+            // Als ingevoerde gebruikers naam niet bestaat
+            page.Update();
+            if (Keuze == "Name") {
+                Console.WriteLine("\nHet ingevoerde gebruikersnaam bestaat niet");
+            }
+            if (Keuze == "Password") {
+                Console.WriteLine("\nU heeft het wachtwoord te vaak onjuist!");
+            }
+            // **verbeteren** Ik krijg een error bij TryAgain
+            // Als try again wordt gecalled blijf hij lopen, zelf op andere paginas
+            if (Keuze == "error") {
+                Console.WriteLine("WTF?");
+            }
+            var trymenu = new UISystem.Menu()
+            .Add("Registreren", RegisterPage.Display)
+            .Add("Opnieuw inloggen", LoginPage.Display);
             
+            trymenu.Display();
         }
         private static void Inloggen() {
-            Console.WriteLine("Gebruikersnaam:");
+            // Inloggen gebruiker
+            Console.WriteLine("Voer uw gebruikersnaam in:");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("LET OP: hoofdletter gevoelig");
+            Console.ResetColor();
             var username = Console.ReadLine();
-            Console.WriteLine("Wachtwoord:");
+            bool NCheck = NameCheck(username);
+            if (!NCheck) {
+                TryAgain("Name");
+            }
+
+            Console.WriteLine("Voer uw wachtwoord in:");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
             var password = Console.ReadLine();
-            bool Check = AccountCheck(username, password);
-            if (Check) {
-                StartPage.Display();
-            } else {
-                LoginPage.Display();
+            bool PCheck = PassCheck(password);
+            while (!PCheck) {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\nUw wachtwoord is incorrect, probeer het opnieuw\n");
+                Console.ResetColor();
+                Console.WriteLine("Voer uw wachtwoord in:");
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("LET OP: hoofdletter gevoelig");
+                Console.ResetColor();
+                password = Console.ReadLine();
+                PCheck = PassCheck(password);
+
+            }
+
+            if (NCheck == PCheck) {
+                GoToDash();
             }
         }
 
-        private static bool AccountCheck(string username, string password) {
-            bool Usercheck = false;
-            bool Passcheck = false;
+        private static void InloggenPersoneel() {
+            // Nog niet af, Ik weet niet of dit een aparte stuk moet zijn
+            // Misschien is zelfde inlog functie al genoeg, alleen breng het je naar andere scherm
+            // Want alle users staan atm in 1 json file
+        }
+
+        private static bool NameCheck(string username) {
+            bool UserCheck = false;
+            
             foreach(Storage.User user in Storage.System.data.users) {
                 if (username == user.username) {
-                    Usercheck = true;
+                    UserCheck = true;
                 }   
+            }
+            return UserCheck;
+        }
+
+        private static bool PassCheck(string password) {
+            bool PassCheck = false;
+
+            foreach(Storage.User user in Storage.System.data.users) {
                 if (password == user.password) {
-                    Passcheck = true;
+                    PassCheck = true;
                 }
             }
-            if (Usercheck && Passcheck) {
-                return true;
-            }
-            return false;
+            return PassCheck;
         }
+
+        
 
     }
 }
