@@ -8,6 +8,7 @@ namespace UISystem
     public class Menu {
 
         private IList<Option> Options { get; set; }
+        private int selectedIndex { get; set; }
 
         public Menu()
         {
@@ -28,7 +29,15 @@ namespace UISystem
             Console.WriteLine("");
             
             int choice = Input.ReadInt("Selecteer een keuze:", min: 1, max: Options.Count);
-            Options[choice - 1].Callback();
+            selectedIndex = choice;
+
+            if (Options[choice - 1].Callback != null) {
+                Options[choice - 1].Callback();
+            }
+        }
+
+        public int GetSelectedIndex() {
+            return selectedIndex;
         }
 
         public Menu Add(string option, Action callback) {
