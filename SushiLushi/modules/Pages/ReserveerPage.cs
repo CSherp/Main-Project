@@ -77,6 +77,7 @@ namespace SushiLushi {
             for (int i = 0; i < aantal_mensen; i++) {
                 int optie_menu = Arr_Opties[i];
                 int index_onnodig = i+1;
+                
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write("Persoon " + index_onnodig + ": "); 
                 Console.ResetColor();  
