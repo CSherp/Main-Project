@@ -82,10 +82,12 @@ namespace SushiLushi {
             bool UserCheck = false;
             
             foreach(Storage.User user in Storage.System.data.users) {
+
                 if (username == user.username) {
                     UserCheck = true;
                 }   
             }
+          
             return UserCheck;
         }
 

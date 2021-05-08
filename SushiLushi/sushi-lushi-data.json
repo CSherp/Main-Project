@@ -5,18 +5,6 @@
       "email": "admin",
       "password": "12345",
       "role": "admin"
-    },
-    {
-      "username": "test",
-      "email": "test",
-      "password": "test",
-      "role": "user"
-    },
-    {
-      "username": "a",
-      "email": "a",
-      "password": "a",
-      "role": "user"
     }
   ]
 }

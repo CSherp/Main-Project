@@ -6,13 +6,22 @@ using System.Collections.Generic;
 
 namespace Storage {
 
+    public static class SushiLushiState {
+        public static Boolean isLoggedIn = false;
+        public static User loggedUser = null;
+
+    }
+
     public class SushiLushiData {
+
         // List van alle geregistreerde accounts
         public List<User> users;
 
         // Constructor
         public SushiLushiData() {
-            users = new List<User>();   
+            users = new List<User>();
+
+            
         }
     }
 
