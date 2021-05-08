@@ -16,7 +16,6 @@ namespace SushiLushi {
 
             int aantal_mensen = UISystem.Input.ReadInt("Voer het aantal personen in waarmee u komt:", 1, 5);
             DateTime today = DateTime.Now;  
-            // Console.WriteLine("Vandaag is het " + today.ToString("dddd") + " " + today.Date.ToString("dd-MM-yyyy"));
             Console.Write("Vandaag is het ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(today.ToString("dddd") + " " + today.Date.ToString("dd-MM-yyyy"));
@@ -78,18 +77,14 @@ namespace SushiLushi {
             for (int i = 0; i < aantal_mensen; i++) {
                 int optie_menu = Arr_Opties[i];
                 int index_onnodig = i+1;
-                Console.WriteLine("Persoon " + index_onnodig + ": " + Arr2[optie_menu-1]); 
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write("Persoon " + index_onnodig + ": "); 
+                Console.ResetColor();  
+                Console.WriteLine(Arr2[optie_menu-1]); 
             }
         }
         private static void GoToStart() {
             StartPage.Display();        }
 
-        // public static void GekleurdTekstje(ConsoleColor color, string text)
-        // {
-        //     ConsoleColor originalColor = Console.ForegroundColor;
-        //     Console.ForegroundColor = color;
-        //     Console.Write(text);
-        //     Console.ForegroundColor = originalColor;
-        // }
     }
 }
