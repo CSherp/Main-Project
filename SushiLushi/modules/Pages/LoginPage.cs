@@ -8,11 +8,7 @@ namespace SushiLushi {
 
             var menu = new UISystem.Menu()
                 .Add("Inloggen", Inloggen)
-                .Add("Terug naar startpagina", GoToStart)
-                .Add("Inloggen als personeel", InloggenPersoneel);
-                // .Add("Doorgaan als gast", DoorgaanGast);
-                // Deze functie kan beter bij reserveren staan, Gast kan je alleen reserveren
-                // Gast kan niet naar dashboard ivm geen account.
+                .Add("Terug naar startpagina", GoToStart);
 
             menu.Display();
         }
@@ -81,11 +77,6 @@ namespace SushiLushi {
             }
         }
 
-        private static void InloggenPersoneel() {
-            // Nog niet af, Ik weet niet of dit een aparte stuk moet zijn
-            // Misschien is zelfde inlog functie al genoeg, alleen breng het je naar andere scherm
-            // Want alle users staan atm in 1 json file
-        }
 
         private static bool NameCheck(string username) {
             bool UserCheck = false;
