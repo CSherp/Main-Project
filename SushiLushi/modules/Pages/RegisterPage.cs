@@ -142,6 +142,8 @@ namespace SushiLushi {
 
             // Sla de huidige gegevens op
             Storage.System.SaveStorage();
+            LoginPage.page.Update();
+            LoginPage.Inloggen();
         }
         public static bool Check(string user){
             foreach(Storage.User gebruiker in Storage.System.data.users) {
@@ -150,5 +152,6 @@ namespace SushiLushi {
             }
             return true;
         }
+
     }
 }

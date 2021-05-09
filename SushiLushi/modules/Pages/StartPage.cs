@@ -106,7 +106,8 @@ namespace SushiLushi {
                 menu.Add("Gebruikers beheren", AdminPage.Display);
                 menu.Add("Reserveringen beheren", null);
             }
-            
+
+    
             menu.Display();
         }
 
