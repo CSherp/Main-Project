@@ -30,12 +30,37 @@ namespace SushiLushi {
             Console.WriteLine(" -oo+:                /ooo:                -ooo+                -o. +o                :o` ");
             Console.WriteLine("");
             UISystem.Output.WriteLine(System.ConsoleColor.White, "Welkom bij Sushi Lushi, het beste Sushi Restaurant in de wereld!");
+            
+            if (Storage.SushiLushiState.isLoggedIn) {
+                UISystem.Output.WriteLine(System.ConsoleColor.Cyan, "U bent ingelogd als: " + Storage.SushiLushiState.loggedUser.username);
+            }
+
             UISystem.Output.WriteLine(System.ConsoleColor.White, "Maak uw keuze!");
             UISystem.Output.WriteLine(System.ConsoleColor.White, "--------------------------");
-            var menu = new UISystem.Menu()
-                .Add("Login", LoginPage.Display)
-                .Add("Registreren", RegisterPage.Display)
-                .Add("Reserveren", ReserveerPage.Display);
+            
+            var menu = new UISystem.Menu();
+
+            // Niet ingelogd
+            if (!Storage.SushiLushiState.isLoggedIn) {
+                menu.Add("Login", LoginPage.Display);
+                menu.Add("Registreren", RegisterPage.Display);
+                
+                menu.Add("Reserveren", ReserveerPage.Display);
+                menu.Add("Menu bekijken", Menulijst.Display);
+            }
+
+            // Ingelogd als gebruiker
+            if (Storage.SushiLushiState.isLoggedIn && !Storage.SushiLushiState.isAdmin) {
+                menu.Add("Reserveren", ReserveerPage.Display);
+                menu.Add("Mijn reservaties", null);
+                menu.Add("Menu bekijken", Menulijst.Display);
+            }
+
+            // Ingelogd als admin
+            if (Storage.SushiLushiState.isLoggedIn && Storage.SushiLushiState.isAdmin) {
+                menu.Add("Gebruikers beheren", AdminPage.Display);
+                menu.Add("Reserveringen beheren", null);
+            }
             
             menu.Display();
         }   

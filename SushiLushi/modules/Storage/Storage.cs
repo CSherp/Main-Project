@@ -8,6 +8,7 @@ namespace Storage {
 
     public static class SushiLushiState {
         public static Boolean isLoggedIn = false;
+        public static Boolean isAdmin = false;
         public static User loggedUser = null;
 
     }

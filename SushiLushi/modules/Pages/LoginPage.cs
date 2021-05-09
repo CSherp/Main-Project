@@ -8,17 +8,9 @@ namespace SushiLushi {
 
             var menu = new UISystem.Menu()
                 .Add("Inloggen", Inloggen)
-                .Add("Terug naar startpagina", GoToStart);
+                .Add("Terug naar startpagina", () => StartPage.Display());
 
             menu.Display();
-        }
-
-        private static void GoToStart() {
-            StartPage.Display();
-        }
-
-        private static void GoToDash() {
-            Dashboard.Display();
         }
 
         private static void TryAgain(string Keuze) {
@@ -52,7 +44,7 @@ namespace SushiLushi {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
-            
+
             var username = Console.ReadLine();
             bool NCheck = NameCheck(username);
             if (!NCheck) {
@@ -80,10 +72,14 @@ namespace SushiLushi {
 
             if (NCheck == PCheck) {
                 // Login successvol! Zet de state
-                Storage.SushiLushiState.isLoggedIn = true;
                 Storage.SushiLushiState.loggedUser = getUser(username, password);
+                Storage.SushiLushiState.isLoggedIn = true;
 
-                GoToDash();
+                if (Storage.SushiLushiState.loggedUser.role == "admin") {
+                    Storage.SushiLushiState.isAdmin = true;
+                }
+                
+                StartPage.Display();
             }
         }
 
