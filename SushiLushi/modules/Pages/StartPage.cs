@@ -87,7 +87,7 @@ namespace SushiLushi {
                 menu.Add("Registreren", RegisterPage.Display);
                 
                 menu.Add("Reserveren", ReserveerPage.Display);
-                menu.Add("Menu bekijken", Menulijst.Display);
+                menu.Add("Menu bekijken", MenuList.Display);
             }
 
             if (Storage.SushiLushiState.isLoggedIn) {
@@ -98,7 +98,7 @@ namespace SushiLushi {
             if (Storage.SushiLushiState.isLoggedIn && !Storage.SushiLushiState.isAdmin) {
                 menu.Add("Reserveren", ReserveerPage.Display);
                 menu.Add("Mijn reservaties", null);
-                menu.Add("Menu bekijken", Menulijst.Display);
+                menu.Add("Menu bekijken", MenuList.Display);
             }
 
             // Ingelogd als admin
