@@ -91,7 +91,8 @@ namespace SushiLushi {
                 .Add("Visgerechten", fish)
                 .Add("Vleesgerechten", flesh)
                 .Add("Vegetarische gerechten", vegan)
-                .Add("Alle gerechten", fish);
+                .Add("Alle gerechten", fish)
+                .Add("Terug naar startpagina", () => StartPage.Display());
             menu.Display();
 
         }
