@@ -136,7 +136,6 @@ namespace SushiLushi {
 
             UISystem.Input.ReadString("U heeft gereserveerd! (Klik op enter om door te gaan)");
             StartPage.Display();
-
         }
         private static void GoToStart() {
             StartPage.Display();        }
