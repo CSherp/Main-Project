@@ -84,9 +84,6 @@ namespace SushiLushi {
             menu.Display();
         }
 
-        private static void GoToDash() {
-            Dashboard.Display();
-        }
         private static void lijst() {
             MenuList.page.Update();
 
