@@ -6,13 +6,23 @@ using System.Collections.Generic;
 
 namespace Storage {
 
+    public static class SushiLushiState {
+        public static Boolean isLoggedIn = false;
+        public static Boolean isAdmin = false;
+        public static User loggedUser = null;
+
+    }
+
     public class SushiLushiData {
+
         // List van alle geregistreerde accounts
         public List<User> users;
+        public List<Reservation> reservations;
 
         // Constructor
         public SushiLushiData() {
-            users = new List<User>();   
+            users = new List<User>();
+            reservations = new List<Reservation>();
         }
     }
 
