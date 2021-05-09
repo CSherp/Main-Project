@@ -40,7 +40,7 @@ namespace UISystem
             return selectedIndex;
         }
 
-        public Menu Add(string option, Action callback) {
+        public Menu Add(string option, Action callback = null) {
             return Add(new Option(option, callback));
         }
 

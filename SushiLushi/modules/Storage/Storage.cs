@@ -17,12 +17,12 @@ namespace Storage {
 
         // List van alle geregistreerde accounts
         public List<User> users;
+        public List<Reservation> reservations;
 
         // Constructor
         public SushiLushiData() {
             users = new List<User>();
-
-            
+            reservations = new List<Reservation>();
         }
     }
 
