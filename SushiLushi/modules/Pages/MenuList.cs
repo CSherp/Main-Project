@@ -94,7 +94,7 @@ namespace SushiLushi {
                 .Add("Visgerechten", fish)
                 .Add("Vleesgerechten", flesh)
                 .Add("Vegetarische gerechten", vegan)
-                .Add("Alle gerechten", all);
+                .Add("Alle gerechten", fish);
             menu.Display();
 
         }
@@ -152,9 +152,5 @@ namespace SushiLushi {
             menu.Display();
     
         }       
-
-        public static void all() {
-            Dashboard.Display();
-        } 
     }
 }
