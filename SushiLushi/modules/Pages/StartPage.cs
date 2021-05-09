@@ -74,10 +74,11 @@ namespace SushiLushi {
             }
 
             Print();
+
+            UISystem.Output.WriteLine(System.ConsoleColor.White, "");
             UISystem.Output.WriteLine(System.ConsoleColor.White, "Welkom bij Sushi Lushi, het beste Sushi restaurant in de wereld!");
             UISystem.Output.WriteLine(System.ConsoleColor.White, "Maak uw keuze!");
-            UISystem.Output.WriteLine(System.ConsoleColor.White, "--------------------------");
-            
+
             var menu = new UISystem.Menu();
 
             // Niet ingelogd
@@ -87,6 +88,10 @@ namespace SushiLushi {
                 
                 menu.Add("Reserveren", ReserveerPage.Display);
                 menu.Add("Menu bekijken", Menulijst.Display);
+            }
+
+            if (Storage.SushiLushiState.isLoggedIn) {
+                menu.Add("Uitloggen", logout);
             }
 
             // Ingelogd als gebruiker
@@ -103,6 +108,14 @@ namespace SushiLushi {
             }
             
             menu.Display();
-        }   
+        }
+
+        public static void logout() {
+            Storage.SushiLushiState.isLoggedIn = false;
+            Storage.SushiLushiState.isAdmin = false;
+            Storage.SushiLushiState.loggedUser = null;
+            
+            UISystem.Input.ReadString("U bent uitgelogd! (Druk op enter om verder te gaan)");
+        }
     }
 }
