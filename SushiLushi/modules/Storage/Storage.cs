@@ -9,10 +9,12 @@ namespace Storage {
     public class SushiLushiData {
         // List van alle geregistreerde accounts
         public List<User> users;
+        public List<Reservation> reservations;
 
         // Constructor
         public SushiLushiData() {
-            users = new List<User>();   
+            users = new List<User>();
+            reservations = new List<Reservation>();
         }
     }
 
