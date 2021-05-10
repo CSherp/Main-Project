@@ -3,15 +3,6 @@ using System;
 namespace SushiLushi {
     class LoginPage {
         public static UISystem.Page page = new UISystem.Page("Login pagina");
-        public static void Display () {
-            page.Update();
-
-            var menu = new UISystem.Menu()
-                .Add("Inloggen", Inloggen)
-                .Add("Terug naar startpagina", () => StartPage.Display());
-
-            menu.Display();
-        }
 
         private static void TryAgain(string Keuze) {
             // Als ingevoerde gebruikers naam niet bestaat
@@ -38,8 +29,8 @@ namespace SushiLushi {
         }
 
 
-        private static void Inloggen() {
-            
+        public static void Display() {
+            page.Update();
             // Inloggen gebruiker
             Console.WriteLine("Voer uw gebruikersnaam in:");
             Console.ForegroundColor = ConsoleColor.DarkGray;

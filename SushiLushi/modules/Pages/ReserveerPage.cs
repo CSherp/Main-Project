@@ -3,17 +3,9 @@ using System;
 namespace SushiLushi {
     class ReserveerPage {
         public static UISystem.Page page = new UISystem.Page("Reserveer pagina");
-        public static void Display () {
-            page.Update();
 
-            var menu = new UISystem.Menu()
-                .Add("Ik wil reserveren", Reserveer)
-                .Add("Terug naar start", StartPage.Display);
-
-            menu.Display();
-        }
-
-        private static void Reserveer() {  
+        public static void Display() { 
+            page.Update(); 
             //
             // Aantal Personen
             //
@@ -65,6 +57,7 @@ namespace SushiLushi {
             menu3.Display();
             
             int index_menu3 = menu3.GetSelectedIndex();
+            page.Update();
             Console.Write("Je hebt gekozen voor: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(available_dates[index_menu2].ToString("dddd") + " " + available_dates[index_menu2].Date.ToString("dd-MM") + " " + available_times[index_menu3 - 1].ToString(@"hh\:mm"));

@@ -3,21 +3,8 @@ using System;
 namespace SushiLushi {
     class RegisterPage {
         public static UISystem.Page page = new UISystem.Page("Registratie pagina");
-        public static void Display () {
-            page.Update();
 
-            var menu = new UISystem.Menu()
-                .Add("Registreren", Register)
-                .Add("Terug naar startpagina", GoToStart);
-
-            menu.Display();
-
-        }
-
-        private static void GoToStart() {
-            StartPage.Display();
-        }
-        public static void Register() {
+        public static void Display() {
             page.Update();
             Console.WriteLine("");
             // Wordt gevraagd om invoeren van email

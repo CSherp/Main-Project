@@ -2,7 +2,7 @@ using System;
 
 namespace SushiLushi {
     class MenuList{
-
+        public static int selectedIndex;
         public static void showInfoFish(){
             page.Update();
             string[][] Fish = {
@@ -18,8 +18,8 @@ namespace SushiLushi {
                 new string[] {"Tonijnfilet", "Sesamzaad", "Bosui"}
                 };
                 Console.WriteLine("");
-                for (int j = 0; j < Fish[0].Length; j++){
-                    Console.WriteLine($"- {Fish[0][j]}");
+                for (int j = 0; j < Fish[selectedIndex].Length; j++){
+                    Console.WriteLine($"- {Fish[selectedIndex][j]}");
                 }
                 var menu = new UISystem.Menu()
                 .Add("Terug naar visgerechten", fish);
@@ -41,8 +41,8 @@ namespace SushiLushi {
                 new string[] {"Tonijnfilet", "Sesamzaad", "Bosui"}
                 };
                 Console.WriteLine("");
-                for (int j = 0; j < Flesh[0].Length; j++){
-                    Console.WriteLine($"- {Flesh[0][j]}");
+                for (int j = 0; j < Flesh[selectedIndex].Length; j++){
+                    Console.WriteLine($"- {Flesh[selectedIndex][j]}");
                 }
                 var menu = new UISystem.Menu()
                 .Add("Terug naar vleesgerechten", flesh);
@@ -64,8 +64,8 @@ namespace SushiLushi {
                 new string[] {"Tonijnfilet", "Sesamzaad", "Bosui"}
                 };
                 Console.WriteLine("");
-                for (int j = 0; j < Vegan[0].Length; j++){
-                    Console.WriteLine($"- {Vegan[0][j]}");
+                for (int j = 0; j < Vegan[selectedIndex].Length; j++){
+                    Console.WriteLine($"- {Vegan[selectedIndex][j]}");
                 }
                 var menu = new UISystem.Menu()
                 .Add("Terug naar vegetarische gerechten", vegan);
@@ -74,18 +74,9 @@ namespace SushiLushi {
             }
 
         public static UISystem.Page page = new UISystem.Page("Menu pagina");
-        public static void Display(){
+
+        public static void Display() {
             page.Update();
-
-            var menu = new UISystem.Menu()
-                .Add("Menulijst", lijst)
-                .Add("Terug naar start", StartPage.Display);
-
-            menu.Display();
-        }
-
-        private static void lijst() {
-            MenuList.page.Update();
 
             var menu = new UISystem.Menu()
                 .Add("Visgerechten", fish)
@@ -109,9 +100,11 @@ namespace SushiLushi {
                 .Add("Ebi tempura roll", showInfoFish)
                 .Add("Zalm sashimi", showInfoFish)
                 .Add("Tonijn sashimi", showInfoFish)
-                .Add("Terug naar gerechten", lijst);
+                .Add("Terug naar gerechten", Display);
 
             menu.Display();
+            selectedIndex = menu.GetSelectedIndex();
+
         }
         public static void flesh() {
             page.Update();
@@ -127,9 +120,10 @@ namespace SushiLushi {
                 .Add("Ebi tempura roll", showInfoFlesh)
                 .Add("Zalm sashimi", showInfoFlesh)
                 .Add("Tonijn sashimi", showInfoFlesh)
-                .Add("Terug naar gerechten", lijst);
+                .Add("Terug naar gerechten", Display);
 
             menu.Display();
+            selectedIndex = menu.GetSelectedIndex();
         }
         public static void vegan() {
             page.Update();
@@ -145,9 +139,10 @@ namespace SushiLushi {
                 .Add("Ebi tempura roll", showInfoVegan)
                 .Add("Zalm sashimi", showInfoVegan)
                 .Add("Tonijn sashimi", showInfoVegan)
-                .Add("Terug naar gerechten", lijst);
+                .Add("Terug naar gerechten", Display);
 
             menu.Display();
+            selectedIndex = menu.GetSelectedIndex();
     
         }       
     }
