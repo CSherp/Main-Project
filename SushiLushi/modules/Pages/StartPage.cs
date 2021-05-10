@@ -97,7 +97,7 @@ namespace SushiLushi {
             // Ingelogd als gebruiker
             if (Storage.SushiLushiState.isLoggedIn && !Storage.SushiLushiState.isAdmin) {
                 menu.Add("Reserveren", ReserveerPage.Display);
-                menu.Add("Mijn reservaties", null);
+                menu.Add("Mijn reservaties", listReservations);
                 menu.Add("Menu bekijken", MenuList.Display);
             }
 
@@ -107,7 +107,6 @@ namespace SushiLushi {
                 menu.Add("Reserveringen beheren", null);
             }
 
-    
             menu.Display();
         }
 
@@ -117,6 +116,23 @@ namespace SushiLushi {
             Storage.SushiLushiState.loggedUser = null;
             
             UISystem.Input.ReadString("U bent uitgelogd! (Druk op enter om verder te gaan)");
+            StartPage.Display();
+        }
+
+        public static void listReservations() {
+            UISystem.Output.WriteLine(ConsoleColor.Cyan, "Dit zijn uw reservaties:");
+
+            foreach (Storage.Reservation reservation in Storage.System.data.reservations) {
+                if (reservation.username == Storage.SushiLushiState.loggedUser.username) {
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "");
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "| Datum: " + reservation.datetime.ToString());
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "| Aantal personen: " + reservation.amountPeople);
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "");
+                }
+            }
+            
+            UISystem.Input.ReadString("(Druk op enter om verder te gaan)");
+            StartPage.Display();
         }
     }
 }

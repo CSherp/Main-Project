@@ -112,6 +112,12 @@ namespace SushiLushi {
             }
 
             string reservationUsername = "";
+            bool reservationGuest = true;
+            
+            if (Storage.SushiLushiState.isLoggedIn) {
+                reservationUsername = Storage.SushiLushiState.loggedUser.username;
+                reservationGuest = false;
+            }
 
             // voeg tijd en datum bij elkaar tot een datetime object
             DateTime reservationDatetime = new DateTime(
@@ -124,7 +130,7 @@ namespace SushiLushi {
             );
 
             Storage.Reservation newReservation = new Storage.Reservation() {
-                guestAccount = true,
+                guestAccount = reservationGuest,
                 username = reservationUsername,
                 amountPeople = aantal_mensen,
                 peopleNotes = people_notes,
