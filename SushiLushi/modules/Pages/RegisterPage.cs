@@ -129,7 +129,9 @@ namespace SushiLushi {
 
             // Sla de huidige gegevens op
             Storage.System.SaveStorage();
-            LoginPage.page.Update();
+            
+            UISystem.Input.ReadString("U heeft geregisteerd! (klik op enter om door te gaan)");
+            StartPage.Display();
         }
         public static bool Check(string user){
             foreach(Storage.User gebruiker in Storage.System.data.users) {
