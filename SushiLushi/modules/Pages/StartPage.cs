@@ -97,7 +97,7 @@ namespace SushiLushi {
             // Ingelogd als gebruiker
             if (Storage.SushiLushiState.isLoggedIn && !Storage.SushiLushiState.isAdmin) {
                 menu.Add("Reserveren", ReserveerPage.Display);
-                menu.Add("Mijn reservaties", listReservations);
+                menu.Add("Mijn reserveringen", listReservations);
                 menu.Add("Menu bekijken", MenuList.Display);
             }
 
@@ -120,7 +120,7 @@ namespace SushiLushi {
         }
 
         public static void listReservations() {
-            UISystem.Output.WriteLine(ConsoleColor.Cyan, "Dit zijn uw reservaties:");
+            UISystem.Output.WriteLine(ConsoleColor.Cyan, "Dit zijn uw reserveringen:");
 
             foreach (Storage.Reservation reservation in Storage.System.data.reservations) {
                 if (reservation.username == Storage.SushiLushiState.loggedUser.username) {
