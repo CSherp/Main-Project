@@ -2,10 +2,7 @@ using System;
 
 namespace SushiLushi {
     class MenuList{
-        public static int selectedIndex;
-        public static void showInfoFish(){
-            page.Update();
-            string[][] Fish = {
+        public static string[][] Fish = {
                 new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Zalmfilet","Norivel(zeewier)"}, 
                 new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Tonijnfilet","Norivel(zeewier)"},
                 new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Zalmfilet"},
@@ -17,18 +14,8 @@ namespace SushiLushi {
                 new string[] {"Zalmfilet", "Sesamzaad", "Bosui"},
                 new string[] {"Tonijnfilet", "Sesamzaad", "Bosui"}
                 };
-                Console.WriteLine("");
-                for (int j = 0; j < Fish[selectedIndex].Length; j++){
-                    Console.WriteLine($"- {Fish[selectedIndex][j]}");
-                }
-                var menu = new UISystem.Menu()
-                .Add("Terug naar visgerechten", fish);
 
-            menu.Display();
-            }
-            public static void showInfoFlesh(){
-                page.Update();
-            string[][] Flesh = {
+        public static string[][] Flesh = {
                 new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Zalmfilet","Norivel(zeewier)"}, 
                 new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Tonijnfilet","Norivel(zeewier)"},
                 new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Zalmfilet"},
@@ -40,18 +27,8 @@ namespace SushiLushi {
                 new string[] {"Zalmfilet", "Sesamzaad", "Bosui"},
                 new string[] {"Tonijnfilet", "Sesamzaad", "Bosui"}
                 };
-                Console.WriteLine("");
-                for (int j = 0; j < Flesh[selectedIndex].Length; j++){
-                    Console.WriteLine($"- {Flesh[selectedIndex][j]}");
-                }
-                var menu = new UISystem.Menu()
-                .Add("Terug naar vleesgerechten", flesh);
 
-            menu.Display();
-            }
-            public static void showInfoVegan(){
-                page.Update();
-            string[][] Vegan = {
+        public static string[][] Vegan = {
                 new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Zalmfilet","Norivel(zeewier)"}, 
                 new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Tonijnfilet","Norivel(zeewier)"},
                 new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Zalmfilet"},
@@ -63,20 +40,11 @@ namespace SushiLushi {
                 new string[] {"Zalmfilet", "Sesamzaad", "Bosui"},
                 new string[] {"Tonijnfilet", "Sesamzaad", "Bosui"}
                 };
-                Console.WriteLine("");
-                for (int j = 0; j < Vegan[selectedIndex].Length; j++){
-                    Console.WriteLine($"- {Vegan[selectedIndex][j]}");
-                }
-                var menu = new UISystem.Menu()
-                .Add("Terug naar vegetarische gerechten", vegan);
-
-            menu.Display();
-            }
 
         public static UISystem.Page page = new UISystem.Page("Menu pagina");
 
         public static void Display() {
-            page.Update();
+            MenuList.page.Update();
 
             var menu = new UISystem.Menu()
                 .Add("Visgerechten", fish)
@@ -90,60 +58,82 @@ namespace SushiLushi {
         public static void fish() {
             page.Update();
             var menu = new UISystem.Menu()
-                .Add("Maki zalm", showInfoFish)
-                .Add("Maki tonijn", showInfoFish)
-                .Add("Nigiri zalm", showInfoFish)
-                .Add("Nigiri tonijn", showInfoFish)
-                .Add("California roll", showInfoFish)
-                .Add("Crunchy california roll", showInfoFish)
-                .Add("Spicy tonijn roll", showInfoFish)
-                .Add("Ebi tempura roll", showInfoFish)
-                .Add("Zalm sashimi", showInfoFish)
-                .Add("Tonijn sashimi", showInfoFish)
+                .Add("Maki zalm")
+                .Add("Maki tonijn")
+                .Add("Nigiri zalm")
+                .Add("Nigiri tonijn")
+                .Add("California roll")
+                .Add("Crunchy california roll")
+                .Add("Spicy tonijn roll")
+                .Add("Ebi tempura roll")
+                .Add("Zalm sashimi")
+                .Add("Tonijn sashimi")
                 .Add("Terug naar gerechten", Display);
 
             menu.Display();
-            selectedIndex = menu.GetSelectedIndex();
 
+            page.Update();
+            Console.WriteLine("");
+            for (int j = 0; j < Fish[menu.GetSelectedIndex()].Length; j++){
+                Console.WriteLine($"- {Fish[menu.GetSelectedIndex()][j]}");
+            }
+            Console.WriteLine("");
+            UISystem.Input.ReadString("(Klik op enter om door te gaan)");
+            Display();
         }
         public static void flesh() {
             page.Update();
 
             var menu = new UISystem.Menu()
-                .Add("Maki zalm", showInfoFlesh)
-                .Add("Maki tonijn", showInfoFlesh)
-                .Add("Nigiri zalm", showInfoFlesh)
-                .Add("Nigiri tonijn", showInfoFlesh)
-                .Add("California roll", showInfoFlesh)
-                .Add("Crunchy california roll", showInfoFlesh)
-                .Add("Spicy tonijn roll", showInfoFlesh)
-                .Add("Ebi tempura roll", showInfoFlesh)
-                .Add("Zalm sashimi", showInfoFlesh)
-                .Add("Tonijn sashimi", showInfoFlesh)
+                .Add("Maki zalm")
+                .Add("Maki tonijn")
+                .Add("Nigiri zalm")
+                .Add("Nigiri tonijn")
+                .Add("California roll")
+                .Add("Crunchy california roll")
+                .Add("Spicy tonijn roll")
+                .Add("Ebi tempura roll")
+                .Add("Zalm sashimi")
+                .Add("Tonijn sashimi")
                 .Add("Terug naar gerechten", Display);
 
             menu.Display();
-            selectedIndex = menu.GetSelectedIndex();
+
+            page.Update();
+            Console.WriteLine("");
+            for (int j = 0; j < Flesh[menu.GetSelectedIndex()].Length; j++){
+                Console.WriteLine($"- {Flesh[menu.GetSelectedIndex()][j]}");
+            }
+            Console.WriteLine("");
+            UISystem.Input.ReadString("(Klik op enter om door te gaan)");
+            Display();
         }
         public static void vegan() {
             page.Update();
 
             var menu = new UISystem.Menu()
-                .Add("Maki zalm", showInfoVegan)
-                .Add("Maki tonijn", showInfoVegan)
-                .Add("Nigiri zalm", showInfoVegan)
-                .Add("Nigiri tonijn", showInfoVegan)
-                .Add("California roll", showInfoVegan)
-                .Add("Crunchy california roll", showInfoVegan)
-                .Add("Spicy tonijn roll", showInfoVegan)
-                .Add("Ebi tempura roll", showInfoVegan)
-                .Add("Zalm sashimi", showInfoVegan)
-                .Add("Tonijn sashimi", showInfoVegan)
+                .Add("Maki zalm")
+                .Add("Maki tonijn")
+                .Add("Nigiri zalm")
+                .Add("Nigiri tonijn")
+                .Add("California roll")
+                .Add("Crunchy california roll")
+                .Add("Spicy tonijn roll")
+                .Add("Ebi tempura roll")
+                .Add("Zalm sashimi")
+                .Add("Tonijn sashimi")
                 .Add("Terug naar gerechten", Display);
 
             menu.Display();
-            selectedIndex = menu.GetSelectedIndex();
-    
+
+            page.Update();
+            Console.WriteLine("");
+            for (int j = 0; j < Vegan[menu.GetSelectedIndex()].Length; j++){
+                Console.WriteLine($"- {Vegan[menu.GetSelectedIndex()][j]}");
+            }
+            Console.WriteLine("");
+            UISystem.Input.ReadString("(Klik op enter om door te gaan)");
+            Display();
         }       
     }
 }
