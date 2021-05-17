@@ -174,9 +174,9 @@ namespace SushiLushi {
             Storage.System.SaveStorage();
             
             if (echte_index == 0) {
-                UISystem.Input.ReadString("U heeft geregisteerd als admin! (klik op enter om door te gaan)");
+                UISystem.Input.ReadString("U bent geregisteerd als admin! (klik op enter om door te gaan)");
             } else {
-                UISystem.Input.ReadString("U heeft geregisteerd als gebruiker! (klik op enter om door te gaan)");
+                UISystem.Input.ReadString("U bent geregisteerd als gebruiker! (klik op enter om door te gaan)");
             }
             
             StartPage.Display();
