@@ -12,5 +12,28 @@
       "password": "Password1",
       "role": "user"
     }
+  ],
+  "reservations": [
+    {
+      "guestAccount": true,
+      "username": "",
+      "amountPeople": 3,
+      "peopleNotes": [
+        "Geen",
+        "Vegetarisch",
+        "Veganistisch"
+      ],
+      "datetime": "2021-05-19T18:00:00"
+    },
+    {
+      "guestAccount": true,
+      "username": "",
+      "amountPeople": 2,
+      "peopleNotes": [
+        "Vegetarisch",
+        "Vegetarisch"
+      ],
+      "datetime": "2021-05-20T16:00:00"
+    }
   ]
 }
