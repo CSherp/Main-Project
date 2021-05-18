@@ -15,17 +15,15 @@ namespace SushiLushi {
                 new string[] {"Tonijnfilet", "Sesamzaad", "Bosui"}
                 };
 
-        public static string[][] Flesh = {
-                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Zalmfilet","Norivel(zeewier)"}, 
-                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Tonijnfilet","Norivel(zeewier)"},
-                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Zalmfilet"},
-                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Tonijnfilet"},
-                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Ebi tempura","Norivel(zeewier)", "Avocado", "Komkommer", "Tobiko","Gebakken ui", "Mayonaise", "Wasabi"},
-                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Zalmfilet","Norivel(zeewier)", "Avocado", "Komkommer", "Tobiko", "Mayonaise", "Wasabi"},
-                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Tonijnfilet","Norivel(zeewier)", "Avocado", "Bosui", "Sesamzaad", "Mayonaise", "Sriracha"},
-                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Ebi tempura","Norivel(zeewier)", "Sesamzaad","Gebakken ui", "Mayonaise", "Wasabi"},
-                new string[] {"Zalmfilet", "Sesamzaad", "Bosui"},
-                new string[] {"Tonijnfilet", "Sesamzaad", "Bosui"}
+        public static string[][] Meat = {
+                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Brookwood varkensbuikspek","Ebi tempura","Norivel(zeewier)", "Aioli", "Wasabi", "Gebakken ui", "Rode ui", "Ketjap"}, 
+                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Avocado","Carpaccio", "Norivel(zeewier)", "Gebakken ui", "Mayonaise", "Ketjap"},
+                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Sesamzaad", "Biefstuk", "Lente ui", "Sambal", "Sesamolie", "Mayonaise"},
+                new string[] {"Rundvlees", "Shiitake saus", "Bosui", "Zeezout", "Peper", "Cherry tomaat", "Peterselie", "Enoki paddestoelen"},
+                new string[] {"Biefrolletjes","Brocolli","Asperge","Gebakken ui", "Mayonaise", "Sambal", "Ketjap"},
+                new string[] {"Rundvlees", "Ijsbergsla", "Honingmosterd dressing", "Gebakken ui"},
+                new string[] {"Rundvlees", "Zeezout", "Peper", "Koriander", "Sesamzaad"},
+                new string[] {"Sushirijst","Kristalsuiker","Rijstazijn","Zeezout","Ebi tempura","Norivel(zeewier)", "Sesamzaad","Gebakken ui", "Mayonaise", "Wasabi"}
                 };
 
         public static string[][] Vegan = {
@@ -48,7 +46,7 @@ namespace SushiLushi {
 
             var menu = new UISystem.Menu()
                 .Add("Visgerechten", fish)
-                .Add("Vleesgerechten", flesh)
+                .Add("Vleesgerechten", meat)
                 .Add("Vegetarische gerechten", vegan)
                 .Add("Alle gerechten", fish)
                 .Add("Terug naar startpagina", () => StartPage.Display());
@@ -81,28 +79,26 @@ namespace SushiLushi {
             UISystem.Input.ReadString("(Klik op enter om door te gaan)");
             Display();
         }
-        public static void flesh() {
+        public static void meat() {
             page.Update();
 
             var menu = new UISystem.Menu()
-                .Add("Maki zalm")
-                .Add("Maki tonijn")
-                .Add("Nigiri zalm")
-                .Add("Nigiri tonijn")
-                .Add("California roll")
-                .Add("Crunchy california roll")
-                .Add("Spicy tonijn roll")
-                .Add("Ebi tempura roll")
-                .Add("Zalm sashimi")
-                .Add("Tonijn sashimi")
+                .Add("Surf n' turf roll")
+                .Add("Carpaccio roll")
+                .Add("Beef roll")
+                .Add("Tournedos")
+                .Add("Usuyaki")
+                .Add("Beef lettuce wrap")
+                .Add("Japanese burger")
+                .Add("Beef tataki")
                 .Add("Terug naar gerechten", Display);
 
             menu.Display();
 
             page.Update();
             Console.WriteLine("");
-            for (int j = 0; j < Flesh[menu.GetSelectedIndex()].Length; j++){
-                Console.WriteLine($"- {Flesh[menu.GetSelectedIndex()][j]}");
+            for (int j = 0; j < Meat[menu.GetSelectedIndex()].Length; j++){
+                Console.WriteLine($"- {Meat[menu.GetSelectedIndex()][j]}");
             }
             Console.WriteLine("");
             UISystem.Input.ReadString("(Klik op enter om door te gaan)");
