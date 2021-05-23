@@ -57,20 +57,8 @@ namespace SushiLushi {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
-            var password = Console.ReadLine();
-            bool PCheck = PassCheck(password);
-            while (!PCheck) {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\nUw wachtwoord is incorrect, probeer het opnieuw\n");
-                Console.ResetColor();
-                Console.WriteLine("Voer uw wachtwoord in:");
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("LET OP: hoofdletter gevoelig");
-                Console.ResetColor();
-                password = Console.ReadLine();
-                PCheck = PassCheck(password);
-
-            }
+            var Password = Console.ReadLine();
+            bool PCheck = PassCheck(Password);
 
             if (NCheck == PCheck) {
                 GoToDash();
@@ -102,7 +90,26 @@ namespace SushiLushi {
             return PassCheck;
         }
 
-        
+        // private static SecureString maskWW() {
+
+        //     SecureString pass = new SecureString();
+        //     ConsoleKeyInfo keyInfo;
+
+        //     do {
+        //         keyInfo = Console.ReadKey(true);
+        //         if(!char.IsControl(keyInfo.KeyChar)) {
+        //             pass.AppendChar(keyInfo.KeyChar);
+        //             Console.Write("*");
+        //         }
+        //         else if(keyInfo.Key == ConsoleKey.Backspace && pass.Length > 0) {
+        //             pass.RemoveAt(pass.Length - 1);
+        //             Console.WriteLine("\b \b");
+        //         }
+        //     }
+        //     while (keyInfo.Key != ConsoleKey.Enter); {
+        //         return pass;
+        //     }
+        // }
 
     }
 }
