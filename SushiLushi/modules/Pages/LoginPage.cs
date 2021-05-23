@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace SushiLushi {
     class LoginPage {
@@ -48,7 +49,7 @@ namespace SushiLushi {
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
             
-            var password = Console.ReadLine();
+            var password = maskWW();
             bool PCheck = PassCheck(password);
             while (!PCheck) {
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -58,7 +59,7 @@ namespace SushiLushi {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("LET OP: hoofdletter gevoelig");
                 Console.ResetColor();
-                password = Console.ReadLine();
+                password = maskWW();
                 PCheck = PassCheck(password);
             }
 
@@ -98,6 +99,32 @@ namespace SushiLushi {
                 }
             }
             return PassCheck;
+        }
+
+        private static string maskWW() {
+        //  Bij het invoeren van wachtwoord wordt de input verwisseld met een "*"
+          StringBuilder WWinput = new StringBuilder();
+          while (true) {
+            //  Checken van cursor locatie voor het toevoegen of verwijderen van char
+              int x = Console.CursorLeft;
+              int y = Console.CursorTop;
+              ConsoleKeyInfo key = Console.ReadKey(true);
+              if (key.Key == ConsoleKey.Enter) {
+                  Console.WriteLine();
+                  break;
+              }
+              if (key.Key == ConsoleKey.Backspace && WWinput.Length > 0) {
+                  WWinput.Remove(WWinput.Length - 1, 1);
+                  Console.SetCursorPosition(x - 1, y);
+                  Console.Write(" ");
+                  Console.SetCursorPosition(x - 1, y);
+              }
+              else if (key.Key != ConsoleKey.Backspace) {
+                  WWinput.Append(key.KeyChar);
+                  Console.Write("*");
+              }
+          }
+          return WWinput.ToString();
         }
 
         private static Storage.User getUser(string username, string password) {
