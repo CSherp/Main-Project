@@ -90,10 +90,6 @@ namespace SushiLushi {
                 menu.Add("Menu bekijken", MenuList.Display);
             }
 
-            if (Storage.SushiLushiState.isLoggedIn) {
-                menu.Add("Uitloggen", logout);
-            }
-
             // Ingelogd als gebruiker
             if (Storage.SushiLushiState.isLoggedIn && !Storage.SushiLushiState.isAdmin) {
                 menu.Add("Reserveren", ReserveerPage.Display);
@@ -106,6 +102,11 @@ namespace SushiLushi {
                 menu.Add("Gebruikers beheren", AdminPage.Display);
                 menu.Add("Reserveringen beheren", null);
             }
+
+            if (Storage.SushiLushiState.isLoggedIn) {
+                menu.Add("Uitloggen", logout);
+            }
+
 
             menu.Display();
         }
