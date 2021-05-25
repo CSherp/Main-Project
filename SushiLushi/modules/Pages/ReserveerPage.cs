@@ -38,7 +38,7 @@ namespace SushiLushi {
             int index_menu2 = menu2.GetSelectedIndex(); 
             Console.Write("Je hebt gekozen voor: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(available_dates[index_menu2].ToString("dddd") + " " + available_dates[index_menu2].Date.ToString("dd-MM"));
+            Console.WriteLine(available_dates[index_menu2 -1].ToString("dddd") + " " + available_dates[index_menu2 -1].Date.ToString("dd-MM"));
             Console.ResetColor();
 
             //
