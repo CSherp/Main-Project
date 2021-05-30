@@ -33,7 +33,7 @@ namespace SushiLushi {
         public static void Display() {
             page.Update();
             // Inloggen gebruiker
-            Console.WriteLine("Voer uw gebruikersnaam in:");
+            Console.WriteLine("\nVoer uw gebruikersnaam in:");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
@@ -44,7 +44,7 @@ namespace SushiLushi {
                 TryAgain("Name");
             }
 
-            Console.WriteLine("Voer uw wachtwoord in:");
+            Console.WriteLine("\nVoer uw wachtwoord in:");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
