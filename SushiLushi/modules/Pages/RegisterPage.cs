@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace SushiLushi {
     class RegisterPage {
@@ -8,33 +9,35 @@ namespace SushiLushi {
             page.Update();
             Console.WriteLine("");
             // Wordt gevraagd om invoeren van email
-            Console.WriteLine("Voer uw mail in:");
+            Console.WriteLine("Voer uw emailadres in:");
             var email = Console.ReadLine().ToLower();
-            while(!RegisterPage.Check(email)){
-                page.Update();
-                Console.WriteLine("Dit mailadres is al in gebruik. Probeer nogmaals: ");
-                email = Console.ReadLine().ToLower();
-            }
-            
             // Als er geen geldige mail wordt ingevoerd komt er een foutmelding
             while(!(email.Contains('@') && email.Contains('.')) || email.Contains(' ')){
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("");
-                Console.WriteLine("Mailadres niet geldig. Probeer nogmaals:");
+                Console.WriteLine("Emailadres NIET geldig. Probeer nogmaals:");
+                Console.ResetColor();
+                email = Console.ReadLine().ToLower();
+            }
+
+            while(!RegisterPage.Check(email)){
+                page.Update();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\nDit emailadres is al in gebruik. Probeer nogmaals: ");
                 Console.ResetColor();
                 email = Console.ReadLine().ToLower();
             }
 
             Console.WriteLine("");
             // Wordt gevraagd om nogmaals invoeren van email
-            Console.WriteLine("Voer uw mail nogmaals in");
+            Console.WriteLine("Voer uw emailadres nogmaals in:");
             string repeatEmail = Console.ReadLine().ToLower();
 
             // Als de 2e mail niet overeen komt geeft deze foutmelding
             while(email != repeatEmail){
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("");
-                Console.WriteLine("De mailadressen komen niet overeen. Probeer nogmaals:");
+                Console.WriteLine("De emailadressen komen NIET overeen. Probeer nogmaals:");
                 Console.ResetColor();
                 repeatEmail = Console.ReadLine().ToLower();
             }
@@ -57,9 +60,9 @@ namespace SushiLushi {
             }
 
             while(username.Contains(' ')){
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("");
-                    Console.WriteLine("Gebruikersnaam mag geen spaties bevatten. Probeer nogmaals:");
+                    Console.WriteLine("Gebruikersnaam mag GEEN spaties bevatten. Probeer nogmaals:");
                     Console.ResetColor();
                     username = Console.ReadLine();
             }
@@ -72,12 +75,14 @@ namespace SushiLushi {
             Console.WriteLine("Wachtwoord moet bestaan uit 8 karakters met een cijfer, een hoofdletter en een speciaal karakter");
             Console.ResetColor();
             var password = Console.ReadLine();
-            
+        
 
             bool isNumber = false;
-            while(isNumber == false){
+            bool isChar = false;
+            while(isNumber == false || isChar == false){
+                var regexItem = new Regex("^[a-zA-Z0-9 ]*$");
                 while(password.Length < 8){
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("");
                     Console.WriteLine("Wachtwoord bevat GEEN 8 karakters. Probeer nogmaals:");
                     Console.ResetColor();
@@ -85,19 +90,41 @@ namespace SushiLushi {
                 }
 
                 for (int i = 0; i < password.Length; i++){
-                    if (!char.IsDigit(password[i])){
+                    if (!char.IsDigit(password[i]))
                         isNumber = false;
-                        }
-                    else{
+                    else
                         isNumber = true;
-                    }
                 }
-                if(isNumber == false){
-                    Console.ForegroundColor = ConsoleColor.Red;
+
+                for (int i = 0; i < password.Length; i++){
+                    if (regexItem.IsMatch(password))
+                        isChar = false;
+                    else
+                        isChar = true;
+                }
+
+                if(isNumber == false || isChar == false){
+                    if(isNumber == false && isChar == false){
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("");
-                    Console.WriteLine("Wachtwoord bevat GEEN digit. Probeer nogmaals:");
+                    Console.WriteLine("Wachtwoord bevat GEEN digit en GEEN speciale karakter. Probeer nogmaals:");
                     Console.ResetColor();
                     password = Console.ReadLine();
+                    }
+                    else if(isNumber == false){
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("");
+                        Console.WriteLine("Wachtwoord bevat GEEN digit. Probeer nogmaals:");
+                        Console.ResetColor();
+                        password = Console.ReadLine();
+                    }
+                    else{
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("");
+                        Console.WriteLine("Wachtwoord bevat GEEN speciale karakter. Probeer nogmaals:");
+                        Console.ResetColor();
+                        password = Console.ReadLine();
+                    }
                 }
             }
             
@@ -108,8 +135,8 @@ namespace SushiLushi {
 
             // Als de 2e wachtwoord niet overeen komt geeft deze foutmelding
             while(password != repeatPassword){
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("De wachtwoorden komen niet overeen. Probeer nogmaals:");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\nDe wachtwoorden komen NIET overeen. Probeer nogmaals:");
                 Console.ResetColor();
                 repeatPassword = Console.ReadLine();
 
@@ -129,10 +156,11 @@ namespace SushiLushi {
 
             // Sla de huidige gegevens op
             Storage.System.SaveStorage();
-            
-            UISystem.Input.ReadString("U heeft geregisteerd! (klik op enter om door te gaan)");
+
+            UISystem.Input.ReadString("\nU heeft geregisteerd! (klik op enter om door te gaan)");
             StartPage.Display();
         }
+    
         public static bool Check(string user){
             foreach(Storage.User gebruiker in Storage.System.data.users) {
                 if(gebruiker.email == user || gebruiker.username == user)
@@ -140,6 +168,5 @@ namespace SushiLushi {
             }
             return true;
         }
-
     }
 }
