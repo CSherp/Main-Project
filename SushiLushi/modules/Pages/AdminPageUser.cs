@@ -28,6 +28,8 @@ namespace SushiLushi {
                 System.Console.Write("\n");
                 index++;
             }
+            UISystem.Input.ReadString("\n(Druk op enter om verder te gaan)");
+            Display();
         }
 
         private static void AddUser() {
