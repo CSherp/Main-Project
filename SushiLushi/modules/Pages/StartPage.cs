@@ -45,6 +45,7 @@ namespace SushiLushi {
 
             }
 
+
             static void PrintBottom(){
 
                 //Array met mogelijke keuzes
@@ -88,37 +89,37 @@ namespace SushiLushi {
                 }
 
                 //Zorgt voor 4 willekeurige prijzen voor de maaltijden
-                string[] price = {"6.75", "7.50", "8.00", "8.50", "9.00", "9.50", "10.00", "12.50", "14.00", "15.00"};
-                string[] ChosenPrices = new string[4];
-                for (int i = 0; i < showAmount; i++){
-                    string randomprice = price[Random(price.Length)];
-                    bool run = true;
-                    while (run){
-                        if (ChosenPrices[0] == null && randomprice.Length == 4 && !ChosenPrices.Contains(randomprice)){
-                            ChosenPrices[0] = randomprice;
-                            run = false;
-                            break;
-                        }
-                        else if (ChosenPrices[1] == null && randomprice.Length == 5 && !ChosenPrices.Contains(randomprice)){
-                            ChosenPrices[1] = randomprice;
-                            run = false;
-                            break;
-                        }
-                        else if (ChosenPrices[2] == null && randomprice.Length == 4 && !ChosenPrices.Contains(randomprice)){
-                            ChosenPrices[2] = randomprice;
-                            run = false;
-                            break;
-                        }
-                        else if (ChosenPrices[3] == null && randomprice.Length == 5 && !ChosenPrices.Contains(randomprice)){
-                            ChosenPrices[3] = randomprice;
-                            run = false;
-                            break;
-                        }
-                    }
+                // string[] price = {"6.75", "7.50", "8.00", "8.50", "9.00", "9.50", "10.00", "12.50", "14.00", "15.00"};
+                // string[] ChosenPrices = new string[4];
+                // for (int i = 0; i < showAmount; i++){
+                //     string randomprice = price[Random(price.Length)];
+                //     bool run = true;
+                //     while (run){
+                //         if (ChosenPrices[0] == null && randomprice.Length == 4 && !ChosenPrices.Contains(randomprice)){
+                //             ChosenPrices[0] = randomprice;
+                //             run = false;
+                //             break;
+                //         }
+                //         else if (ChosenPrices[1] == null && randomprice.Length == 5 && !ChosenPrices.Contains(randomprice)){
+                //             ChosenPrices[1] = randomprice;
+                //             run = false;
+                //             break;
+                //         }
+                //         else if (ChosenPrices[2] == null && randomprice.Length == 4 && !ChosenPrices.Contains(randomprice)){
+                //             ChosenPrices[2] = randomprice;
+                //             run = false;
+                //             break;
+                //         }
+                //         else if (ChosenPrices[3] == null && randomprice.Length == 5 && !ChosenPrices.Contains(randomprice)){
+                //             ChosenPrices[3] = randomprice;
+                //             run = false;
+                //             break;
+                //         }
+                //     }
                    
-                }
+                //}
 
-                Tuple<string, string, string, string> prices = Tuple.Create(ChosenPrices[0], ChosenPrices[1], ChosenPrices[2], ChosenPrices[3]);
+                //Tuple<string, string, string, string> prices = Tuple.Create(ChosenPrices[0], ChosenPrices[1], ChosenPrices[2], ChosenPrices[3]);
 
 
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -128,8 +129,8 @@ namespace SushiLushi {
                 Console.WriteLine(@".s.                                                                                    .s.");
                 Console.WriteLine(@".s.                               Maaltijden van de dag:                               .s.");
                 Console.WriteLine(@".s.                                                                                    .s.");
-                Console.WriteLine($".s.                 {show[0]}:     {prices.Item1}            {show[2]}:   {prices.Item3}              .s.");
-                Console.WriteLine($".s.                 {show[1]}:   {prices.Item2}           {show[3]}:   {prices.Item4}               .s.");
+                Console.WriteLine($".s.                 {show[0]}:                   .s.");
+                Console.WriteLine($".s.                 {show[1]}:                  .s.");
                 Console.WriteLine(@".s.                                                                                    .s.");
                 Console.WriteLine(@"`/::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::/`");
                 Console.WriteLine(@".s:------------------------------------------------------------------------------------:s.");

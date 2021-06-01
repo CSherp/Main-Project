@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 namespace SushiLushi {
-    class AdminPage {
+    class AdminPageUser {
         public static UISystem.Page page = new UISystem.Page("Admin pagina");
 
         public static void Display () {
@@ -209,6 +209,6 @@ namespace SushiLushi {
             }
             
             StartPage.Display();
-        }
+        } 
     }
 }

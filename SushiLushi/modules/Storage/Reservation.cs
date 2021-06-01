@@ -5,6 +5,9 @@ namespace Storage {
 
         public int id { get; set; }
         public bool guestAccount { get; set; }
+        public string fullname { get; set; }
+
+        public string email { get; set; }
 
         public string username { get; set; }
 

@@ -17,11 +17,11 @@
     {
       "id": 0,
       "guestAccount": true,
+      "fullname": "donna volk",
+      "email": "donnavolk@gmail.com",
       "username": "",
-      "amountPeople": 3,
+      "amountPeople": 1,
       "peopleNotes": [
-        "Geen",
-        "Vegetarisch",
         "Veganistisch"
       ],
       "datetime": "2021-05-19T18:00:00"

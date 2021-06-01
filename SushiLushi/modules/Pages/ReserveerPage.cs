@@ -10,6 +10,23 @@ namespace SushiLushi {
             //
             // Aantal Personen
             //
+            var name = "";
+            var email = "";
+            if(!Storage.SushiLushiState.isLoggedIn){
+                Console.WriteLine("\nVoer uw emailadres in:");
+                email = Console.ReadLine().ToLower();
+                // Als er geen geldige mail wordt ingevoerd komt er een foutmelding
+                while(!(email.Contains('@') && email.Contains('.')) || email.Contains(' ')){
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("");
+                    Console.WriteLine("Emailadres NIET geldig. Probeer nogmaals:");
+                    Console.ResetColor();
+                    email = Console.ReadLine();
+                }
+                page.Update();
+                Console.WriteLine("\nVoer uw voor en achternaam in:");
+                name = Console.ReadLine();
+            }
 
             int aantal_mensen = UISystem.Input.ReadInt("Voer het aantal personen in waarmee u komt:", 1, 5);
             List<Storage.Table> SortedList = Storage.System.data.tables.OrderBy(o => o.size).ToList();
@@ -151,6 +168,8 @@ namespace SushiLushi {
                 guestAccount = reservationGuest,
                 id = reservationID,
                 username = reservationUsername,
+                fullname = name,
+                email = email,
                 amountPeople = aantal_mensen,
                 peopleNotes = people_notes,
                 datetime = reservationDatetime
