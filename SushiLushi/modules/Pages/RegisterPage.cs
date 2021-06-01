@@ -150,7 +150,6 @@ namespace SushiLushi {
                 password = password,
                 role = "user"
             };
-
             // Voeg toe aan storge user list
             Storage.System.data.users.Add(newUser);
 
@@ -160,7 +159,7 @@ namespace SushiLushi {
             UISystem.Input.ReadString("\nU heeft geregisteerd! (klik op enter om door te gaan)");
             StartPage.Display();
         }
-    
+        
         public static bool Check(string user){
             foreach(Storage.User gebruiker in Storage.System.data.users) {
                 if(gebruiker.email == user || gebruiker.username == user)

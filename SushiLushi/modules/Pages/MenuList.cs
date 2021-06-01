@@ -73,8 +73,8 @@ namespace SushiLushi {
                 .Add("Alle gerechten", all)
                 .Add("Terug naar startpagina", () => StartPage.Display());
             menu.Display();
-
         }
+        
         public static void fish() {
             page.Update();
             var menu = new UISystem.Menu()

@@ -99,8 +99,8 @@ namespace SushiLushi {
 
             // Ingelogd als admin
             if (Storage.SushiLushiState.isLoggedIn && Storage.SushiLushiState.isAdmin) {
-                menu.Add("Gebruikers beheren", AdminPage.Display);
-                menu.Add("Reserveringen beheren", null);
+                menu.Add("Gebruikers beheren", AdminPageUser.Display);
+                menu.Add("Reserveringen beheren", AdminPageReservations.Display);
             }
 
             if (Storage.SushiLushiState.isLoggedIn) {
