@@ -2,6 +2,8 @@ using System;
 
 namespace Storage {
     public class Reservation {
+
+        public int id { get; set; }
         public bool guestAccount { get; set; }
 
         public string username { get; set; }

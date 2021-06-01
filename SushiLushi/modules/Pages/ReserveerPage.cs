@@ -1,5 +1,6 @@
 using System;
-
+using System.Linq;
+using System.Collections.Generic;
 namespace SushiLushi {
     class ReserveerPage {
         public static UISystem.Page page = new UISystem.Page("Reserveer pagina");
@@ -11,7 +12,31 @@ namespace SushiLushi {
             //
 
             int aantal_mensen = UISystem.Input.ReadInt("Voer het aantal personen in waarmee u komt:", 1, 5);
-            
+            List<Storage.Table> SortedList = Storage.System.data.tables.OrderBy(o => o.size).ToList();
+            int reservationID = new Random().Next(100000, 999999);
+            bool foundTable = false;
+            foreach (Storage.Table table in SortedList){
+                if (!table.available){
+                    continue;
+                }
+                if (table.size >= aantal_mensen){
+                    table.available = false;
+                    table.reservationID = reservationID;
+                    foundTable = true;
+                    break;
+                }
+                else {
+                    continue;
+                }
+            }
+            if (!foundTable){
+                UISystem.Input.ReadString("Helaas zijn er momenteel geen plekken beschikbaar. Druk op enter om terug te gaan naar het startscherm.");
+                StartPage.Display();
+            }
+
+
+
+            //
             //
             // Datum
             //
@@ -124,6 +149,7 @@ namespace SushiLushi {
 
             Storage.Reservation newReservation = new Storage.Reservation() {
                 guestAccount = reservationGuest,
+                id = reservationID,
                 username = reservationUsername,
                 amountPeople = aantal_mensen,
                 peopleNotes = people_notes,

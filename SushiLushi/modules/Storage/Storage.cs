@@ -19,6 +19,8 @@ namespace Storage {
         public List<User> users;
         public List<Reservation> reservations;
 
+        public List<Table> tables;
+
         // Constructor
         public SushiLushiData() {
             users = new List<User>();
