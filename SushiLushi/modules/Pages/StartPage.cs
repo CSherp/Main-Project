@@ -58,8 +58,12 @@ namespace SushiLushi {
                 Console.WriteLine(@".s.                                                                                    .s.");
                 Console.WriteLine(@".s.                               Maaltijden van de dag:                               .s.");
                 Console.WriteLine(@".s.                                                                                    .s.");
-                Console.WriteLine($".s.                 Persoon 12+ dinner :                                               .s.");
-                Console.WriteLine($".s.                                                                                    .s.");
+                Console.WriteLine(@".s.            maandag t/m woensdag                        donderdag t/m zondag        .s.");
+                Console.WriteLine(@".s.                                                                                    .s.");
+                Console.WriteLine(@".s.         Persoon 12+ lunch    : 21.50                Persoon 12+ lunch    : 23.50   .s.");
+                Console.WriteLine($".s.         Persoon 12+ diner    : 29.50                Persoon 12+ diner    : 32.50   .s.");
+                Console.WriteLine($".s.       Persoon 4 t/m 11 lunch : 13.50              Persoon 4 t/m 11 lunch : 13.50   .s.");
+                Console.WriteLine(@".s.       Persoon 4 t/m 11 diner : 15.95              Persoon 4 t/m 11 diner : 15.95   .s.");
                 Console.WriteLine(@".s.                                                                                    .s.");
                 Console.WriteLine(@"`/::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::/`");
                 Console.WriteLine(@".s:------------------------------------------------------------------------------------:s.");
@@ -100,6 +104,7 @@ namespace SushiLushi {
                 
                 menu.Add("Reserveren", ReserveerPage.Display);
                 menu.Add("Menu bekijken", MenuList.Display);
+                menu.Add("Reglement COVID-19", Reglement.Display);
             }
 
             // Ingelogd als gebruiker
@@ -107,6 +112,7 @@ namespace SushiLushi {
                 menu.Add("Reserveren", ReserveerPage.Display);
                 menu.Add("Mijn reserveringen", listReservations);
                 menu.Add("Menu bekijken", MenuList.Display);
+                menu.Add("Reglement COVID-19", Reglement.Display);
             }
 
             // Ingelogd als admin
