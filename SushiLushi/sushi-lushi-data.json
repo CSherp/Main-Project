@@ -27,19 +27,6 @@
       "datetime": "2021-05-19T18:00:00"
     },
     {
-      "id": 0,
-      "guestAccount": true,
-      "fullname": null,
-      "email": null,
-      "username": "",
-      "amountPeople": 2,
-      "peopleNotes": [
-        "Vegetarisch",
-        "Vegetarisch"
-      ],
-      "datetime": "2021-05-20T16:00:00"
-    },
-    {
       "id": 856597,
       "guestAccount": true,
       "fullname": null,

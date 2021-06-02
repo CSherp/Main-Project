@@ -10,6 +10,7 @@ namespace SushiLushi {
             var menu = new UISystem.Menu()
                 .Add("Gebruikers weergeven", listAllUsers)
                 .Add("Gebruiker toevoegen", AddUser)
+                .Add("Gebruiker verwijderen", RemoveUser)
                 .Add("Terug naar start", StartPage.Display);
 
             menu.Display();
@@ -211,6 +212,9 @@ namespace SushiLushi {
             }
             
             StartPage.Display();
-        } 
+        }
+        private static void RemoveUser() {
+
+            } 
     }
 }
