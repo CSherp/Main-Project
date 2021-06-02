@@ -29,6 +29,8 @@
     {
       "id": 0,
       "guestAccount": true,
+      "fullname": null,
+      "email": null,
       "username": "",
       "amountPeople": 2,
       "peopleNotes": [
@@ -40,6 +42,8 @@
     {
       "id": 856597,
       "guestAccount": true,
+      "fullname": null,
+      "email": null,
       "username": "",
       "amountPeople": 2,
       "peopleNotes": [
@@ -47,14 +51,27 @@
         "Geen"
       ],
       "datetime": "2021-06-04T16:00:00"
+    },
+    {
+      "id": 293285,
+      "guestAccount": true,
+      "fullname": "Dejan",
+      "email": "1005271@hr.nl",
+      "username": "",
+      "amountPeople": 2,
+      "peopleNotes": [
+        "Geen",
+        "Geen"
+      ],
+      "datetime": "2021-06-04T13:00:00"
     }
   ],
   "tables": [
     {
       "id": 1,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "available": false,
+      "reservationID": 293285
     },
     {
       "id": 2,
