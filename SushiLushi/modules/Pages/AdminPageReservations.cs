@@ -63,41 +63,44 @@ namespace SushiLushi {
                 System.Console.Write("[" + index + "] ");
                 UISystem.Output.WriteLine(ConsoleColor.White, " Terug naar vorige pagina\n");
                 UISystem.Output.WriteLine(ConsoleColor.Green, "");
-                index++;
+                index = index+1;
                 Console.Write("Selecteer een keuze: ");
                 int n = Convert.ToInt32(Console.ReadLine());
-                while(!(n >= 1 || n <= index)){
-                    Console.Write("Selecteer een keuze: ");
+                while(n < 1 || n >= index){
+                    Console.Write($"Selecteer een keuze (1 t/m {index-1}): ");
                     n = Convert.ToInt32(Console.ReadLine());
                 }
-                if(n == index)
-                    Display();
 
-                page.Update();
-                System.Console.ForegroundColor = System.ConsoleColor.Gray;
-                UISystem.Output.WriteLine(ConsoleColor.Green, "");
-                UISystem.Output.WriteLine(ConsoleColor.Green, Storage.System.data.reservations[n-1].guestAccount ? " | Gastgebruiker: " + Storage.System.data.reservations[n-1].fullname + " - " + Storage.System.data.reservations[n-1].email :  " | Gebruikersnaam: " + Storage.System.data.reservations[n-1].username);
-                UISystem.Output.WriteLine(ConsoleColor.Green, " | Datum: " + Storage.System.data.reservations[n-1].datetime.ToString());
-                UISystem.Output.WriteLine(ConsoleColor.Green, " | Aantal personen: " + Storage.System.data.reservations[n-1].amountPeople);
-                UISystem.Output.WriteLine(ConsoleColor.Green, "");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Weet u zeker dat u deze reservering wilt verwijderen y/n?");
-                Console.ResetColor();
-                var t = Console.ReadLine().ToLower();
-                while(!(t == "y" || t == "n")){
+                if(n == (index-1))
+                    Display();
+                else{
+                    page.Update();
+                    System.Console.ForegroundColor = System.ConsoleColor.Gray;
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "");
+                    UISystem.Output.WriteLine(ConsoleColor.Green, Storage.System.data.reservations[n-1].guestAccount ? " | Gastgebruiker: " + Storage.System.data.reservations[n-1].fullname + " - " + Storage.System.data.reservations[n-1].email :  " | Gebruikersnaam: " + Storage.System.data.reservations[n-1].username);
+                    UISystem.Output.WriteLine(ConsoleColor.Green, " | Datum: " + Storage.System.data.reservations[n-1].datetime.ToString());
+                    UISystem.Output.WriteLine(ConsoleColor.Green, " | Aantal personen: " + Storage.System.data.reservations[n-1].amountPeople);
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Weet u zeker dat u deze reservering wilt verwijderen y/n?");
+                    Console.ResetColor();
+                    var t = Console.ReadLine().ToLower();
+                    while(!(t == "y" || t == "n")){
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Weet u zeker dat u deze reservering wilt verwijderen y/n?");
                     Console.ResetColor();
                     t = Console.ReadLine().ToLower();
+                    }
+                    if(t == "y"){
+                        Storage.System.data.reservations.Remove(Storage.System.data.reservations[n-1]);
+                        Storage.System.SaveStorage();
+                        page.Update();
+                        UISystem.Input.ReadString("\nReservering succesvol verwijderd! (Druk op enter om verder te gaan)");
+                        Display();
+                        break;
+                    }
                 }
-                if(t == "y"){
-                    Storage.System.data.reservations.Remove(Storage.System.data.reservations[n-1]);
-                    Storage.System.SaveStorage();
-                    page.Update();
-                    UISystem.Input.ReadString("\nReservering succesvol verwijderd! (Druk op enter om verder te gaan)");
-                    Display();
-                    break;
-                }
+                
             }
 
             
