@@ -108,7 +108,7 @@ namespace SushiLushi {
                 else if (table.size >= aantal_mensen) {
                     bool timeAvailable = true;
 
-                    foreach(Storage.TableReservation tablereservation in table.reservations) {
+                    foreach(Storage.TableReservation tablereservation in table.reservations.ToList()) {
                         if (tablereservation.datetime == reservationDatetime) {
                             timeAvailable = false;
                         }
@@ -253,6 +253,18 @@ namespace SushiLushi {
                     t = Console.ReadLine().ToLower();
                     }
                     if(t == "y"){
+                        //
+                        // Remove old table reservation
+                        //
+
+                        foreach (Storage.Table table in Storage.System.data.tables) {
+                            foreach(Storage.TableReservation tablereservation in table.reservations.ToList()) {
+                                if (tablereservation.reservationId == Storage.System.data.reservations[n-1].id) {
+                                    table.reservations.Remove(tablereservation);
+                                }
+                            }
+                        }
+                        
                         Storage.System.data.reservations.Remove(Storage.System.data.reservations[n-1]);
                         Storage.System.SaveStorage();
                         page.Update();

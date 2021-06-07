@@ -193,6 +193,7 @@ namespace SushiLushi {
             //
             // Remove old table reservation
             //
+
             foreach (Storage.Table table in Storage.System.data.tables) {
                 foreach(Storage.TableReservation tablereservation in table.reservations.ToList()) {
                     if (tablereservation.reservationId == currentReservation.id) {
@@ -285,7 +286,7 @@ namespace SushiLushi {
                     else if (table.size >= currentReservation.amountPeople) {
                         bool timeAvailable = true;
 
-                        foreach(Storage.TableReservation tablereservation in table.reservations) {
+                        foreach(Storage.TableReservation tablereservation in table.reservations.ToList()) {
                             if (tablereservation.datetime == reservationDatetime) {
                                 timeAvailable = false;
                             }
