@@ -49,10 +49,6 @@ namespace SushiLushi {
 
 
             static void PrintBottom(){
-
-                
-
-
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("");
                 Console.WriteLine(@"`----------------------------------------------------------------------------------------`");  
