@@ -128,7 +128,10 @@ namespace SushiLushi {
             bool isNumber = false;
             bool isChar = false;
             while(isNumber == false || isChar == false){
-                var regexItem = new Regex("^[a-zA-Z0-9 ]*$");
+                isNumber = false;
+                isChar = false;
+                var regexChar = new Regex("[^a-zA-Z0-9]+");
+                var regexDigit = new Regex("[0-9]");
                 while(password.Length < 8){
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("");
@@ -137,25 +140,18 @@ namespace SushiLushi {
                     password = Console.ReadLine();
                 }
 
-                for (int i = 0; i < password.Length; i++){
-                    if (!char.IsDigit(password[i]))
-                        isNumber = false;
-                    else
-                        isNumber = true;
-                }
 
-                for (int i = 0; i < password.Length; i++){
-                    if (regexItem.IsMatch(password))
-                        isChar = false;
-                    else
-                        isChar = true;
-                }
+                if (regexDigit.IsMatch(password))
+                    isNumber = true;
+         
+                if (regexChar.IsMatch(password))
+                    isChar = true;
 
                 if(isNumber == false || isChar == false){
                     if(isNumber == false && isChar == false){
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("");
-                    Console.WriteLine("Wachtwoord bevat GEEN digit en GEEN speciale karakter. Probeer nogmaals:");
+                    Console.WriteLine("Wachtwoord bevat GEEN digit en GEEN speciaal karakter. Probeer nogmaals:");
                     Console.ResetColor();
                     password = Console.ReadLine();
                     }
@@ -166,10 +162,10 @@ namespace SushiLushi {
                         Console.ResetColor();
                         password = Console.ReadLine();
                     }
-                    else{
+                    else if (isChar == false){
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("");
-                        Console.WriteLine("Wachtwoord bevat GEEN speciale karakter. Probeer nogmaals:");
+                        Console.WriteLine("Wachtwoord bevat GEEN speciaal karakter. Probeer nogmaals:");
                         Console.ResetColor();
                         password = Console.ReadLine();
                     }
@@ -222,7 +218,7 @@ namespace SushiLushi {
         private static void RemoveUser() {
                 while(true){
                 page.Update();
-                UISystem.Output.WriteLine(System.ConsoleColor.Cyan, "\nDit zijn alle reserveringen in het systeem:");
+                UISystem.Output.WriteLine(System.ConsoleColor.Cyan, "\nDit zijn alle geregistreerde accounts in het systeem:");
                 int index = 1;
                 foreach (Storage.User user in Storage.System.data.users) {
                 System.Console.ForegroundColor = System.ConsoleColor.Cyan;

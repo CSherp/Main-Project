@@ -17,6 +17,12 @@
       "email": "123@12.nl",
       "password": "Hallo123!4",
       "role": "user"
+    },
+    {
+      "username": "test",
+      "email": "test@gmail.com",
+      "password": "test1234!",
+      "role": "user"
     }
   ],
   "reservations": [

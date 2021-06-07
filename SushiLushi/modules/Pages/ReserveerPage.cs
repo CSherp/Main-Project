@@ -205,5 +205,66 @@ namespace SushiLushi {
         private static void GoToStart() {
             StartPage.Display();        }
 
+        public static void RemoveUserReservations() {
+               while(true){
+                page.Update();
+                UISystem.Output.WriteLine(System.ConsoleColor.Cyan, "\nDit zijn uw reserveringen:");
+                int index = 1;
+                foreach (Storage.Reservation reservation in Storage.System.data.reservations) {
+                if (reservation.username == Storage.SushiLushiState.loggedUser.username) {
+                    System.Console.ForegroundColor = System.ConsoleColor.Cyan;
+                    Console.WriteLine("");
+                    System.Console.Write("[" + index + "] ");
+                    System.Console.ForegroundColor = System.ConsoleColor.Gray;
+                    UISystem.Output.WriteLine(ConsoleColor.Green, " | Datum: " + reservation.datetime.ToString());
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "     | Aantal personen: " + reservation.amountPeople);
+                    index++;
+                }
+            }
+                System.Console.ForegroundColor = System.ConsoleColor.Cyan;
+                Console.WriteLine("");
+                System.Console.Write("[" + index + "] ");
+                UISystem.Output.WriteLine(ConsoleColor.White, " Terug naar vorige pagina\n");
+                index = index+1;
+                Console.Write("Selecteer een keuze: ");
+                int n = Convert.ToInt32(Console.ReadLine());
+                while(n < 1 || n >= index){
+                    Console.Write($"Selecteer een keuze (1 t/m {index-1}): ");
+                    n = Convert.ToInt32(Console.ReadLine());
+                }
+
+                if(n == (index-1))
+                    Display();
+                else{
+                    page.Update();
+                    System.Console.ForegroundColor = System.ConsoleColor.Gray;
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "");
+                    UISystem.Output.WriteLine(ConsoleColor.Green, " | Datum: " + Storage.System.data.reservations[n-1].datetime.ToString());
+                    UISystem.Output.WriteLine(ConsoleColor.Green, " | Aantal personen: " + Storage.System.data.reservations[n-1].amountPeople);
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Weet u zeker dat u deze reservering wilt verwijderen y/n?");
+                    Console.ResetColor();
+                    var t = Console.ReadLine().ToLower();
+                    while(!(t == "y" || t == "n")){
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Weet u zeker dat u deze reservering wilt verwijderen y/n?");
+                    Console.ResetColor();
+                    t = Console.ReadLine().ToLower();
+                    }
+                    if(t == "y"){
+                        Storage.System.data.reservations.Remove(Storage.System.data.reservations[n-1]);
+                        Storage.System.SaveStorage();
+                        page.Update();
+                        Console.WriteLine("");
+                        UISystem.Input.ReadString("Reservering succesvol verwijderd! (Druk op enter om verder te gaan)");
+                        StartPage.Display();
+                        break;
+                    }
+                }
+                
+            }     
+            }
+
     }
 }

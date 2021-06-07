@@ -113,6 +113,7 @@ namespace SushiLushi {
                 menu.Add("Reserveren", ReserveerPage.Display);
                 menu.Add("Mijn reserveringen", listReservations);
                 menu.Add("Reservering aanpassen", changeReservation);
+                menu.Add("Reserveringen verwijderen", ReserveerPage.RemoveUserReservations);
                 menu.Add("Menu bekijken", MenuList.Display);
                 menu.Add("Reglement COVID-19", Reglement.Display);
             }
