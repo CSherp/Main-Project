@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
+
 namespace SushiLushi {
     using static MenuList;
     public static class StartPage {
@@ -101,7 +103,6 @@ namespace SushiLushi {
             if (!Storage.SushiLushiState.isLoggedIn) {
                 menu.Add("Login", LoginPage.Display);
                 menu.Add("Registreren", RegisterPage.Display);
-                
                 menu.Add("Reserveren", ReserveerPage.Display);
                 menu.Add("Menu bekijken", MenuList.Display);
                 menu.Add("Reglement COVID-19", Reglement.Display);
@@ -111,6 +112,7 @@ namespace SushiLushi {
             if (Storage.SushiLushiState.isLoggedIn && !Storage.SushiLushiState.isAdmin) {
                 menu.Add("Reserveren", ReserveerPage.Display);
                 menu.Add("Mijn reserveringen", listReservations);
+                menu.Add("Reservering aanpassen", changeReservation);
                 menu.Add("Menu bekijken", MenuList.Display);
                 menu.Add("Reglement COVID-19", Reglement.Display);
             }
@@ -151,6 +153,171 @@ namespace SushiLushi {
             
             UISystem.Input.ReadString("(Druk op enter om verder te gaan)");
             StartPage.Display();
-        }  
+        }
+
+        public static void changeReservation() {
+            page.Update();
+
+            UISystem.Output.WriteLine(ConsoleColor.Cyan, "Dit zijn uw reserveringen:");
+
+            List<Storage.Reservation> userReservations = new List<Storage.Reservation>();
+
+            foreach (Storage.Reservation reservation in Storage.System.data.reservations) {
+                if (reservation.username == Storage.SushiLushiState.loggedUser.username) {
+                    userReservations.Add(reservation);
+                }
+            }
+
+            int index = 1;
+            foreach (Storage.Reservation reservation in userReservations) {
+                    System.Console.ForegroundColor = System.ConsoleColor.Cyan;
+                    Console.WriteLine("");
+                    System.Console.Write("[" + index + "] ");
+                    System.Console.ForegroundColor = System.ConsoleColor.Gray;
+                    UISystem.Output.WriteLine(ConsoleColor.Green, " | Gebruikersnaam: " + reservation.username);
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "     | Datum: " + reservation.datetime.ToString());
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "     | Aantal personen: " + reservation.amountPeople);
+                    UISystem.Output.WriteLine(ConsoleColor.Green, "");
+                    System.Console.Write("\n");
+                    index++;
+            }
+
+            int selectedIndex = UISystem.Input.ReadInt("Selecteer een reservering:", 1, index);
+            Storage.Reservation currentReservation = userReservations[selectedIndex - 1];
+            
+            UISystem.Output.WriteLine(ConsoleColor.Cyan, "");
+            UISystem.Output.WriteLine(ConsoleColor.Cyan, "Wat wilt u doen met de geselecteerde reservering?");
+            
+            UISystem.Menu menu = new UISystem.Menu();
+            menu.Add("Reservering datum verplaatsen", null);
+            menu.Add("Terug naar menu", StartPage.Display);
+            menu.Display();
+
+            //
+            // Remove old table reservation
+            //
+            foreach (Storage.Table table in Storage.System.data.tables) {
+                foreach(Storage.TableReservation tablereservation in table.reservations.ToList()) {
+                    if (tablereservation.reservationId == currentReservation.id) {
+                        table.reservations.Remove(tablereservation);
+                    }
+                }
+            }
+
+            //
+            // Select new datetime
+            //
+
+            bool selectedNew = false;
+            DateTime selectedDateTime;
+
+            while(!selectedNew) {
+                //
+                // Datum
+                //
+                
+                Console.Write("Vandaag is het ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                DateTime today = DateTime.Now;  
+                Console.WriteLine(today.ToString("dddd") + " " + today.Date.ToString("dd-MM-yyyy"));
+                Console.ResetColor();
+
+                Console.WriteLine("Kies een dag:");
+
+                DateTime[] available_dates = new DateTime[] { today.AddDays(1), today.AddDays(2), today.AddDays(3), today.AddDays(4), today.AddDays(5) };
+
+                var dateSelectMenu = new UISystem.Menu();
+
+                foreach (DateTime value in available_dates) {
+                    dateSelectMenu.Add(value.ToString("dddd") + " " + value.Date.ToString("dd-MM"));
+                }
+
+                dateSelectMenu.Display();
+
+                int dateSelectIndex = dateSelectMenu.GetSelectedIndex(); 
+                Console.Write("U heeft gekozen voor: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(available_dates[dateSelectIndex -1].ToString("dddd") + " " + available_dates[dateSelectIndex -1].Date.ToString("dd-MM"));
+                Console.ResetColor();
+
+                //
+                // Tijd
+                //
+
+                Console.WriteLine("Kies een tijd: ");
+                
+                TimeSpan[] available_times = new TimeSpan[] { new TimeSpan(13, 00, 00), new TimeSpan(16, 00, 00), new TimeSpan(18, 00, 00), new TimeSpan(20, 00, 00)};
+                var timeSelectMenu = new UISystem.Menu();
+
+                foreach (TimeSpan value in available_times) {
+                    timeSelectMenu.Add("Vanaf: " + value.ToString(@"hh\:mm"));
+                }
+
+                timeSelectMenu.Display();
+                
+                int timeSelectIndex = timeSelectMenu.GetSelectedIndex();
+                page.Update();
+                Console.Write("U heeft gekozen voor: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(available_dates[dateSelectIndex].ToString("dddd") + " " + available_dates[dateSelectIndex].Date.ToString("dd-MM") + " " + available_times[timeSelectIndex - 1].ToString(@"hh\:mm"));
+                Console.ResetColor();
+
+                // voeg tijd en datum bij elkaar tot een datetime object
+                DateTime reservationDatetime = new DateTime(
+                    available_dates[dateSelectIndex].Year,
+                    available_dates[dateSelectIndex].Month,
+                    available_dates[dateSelectIndex].Day,
+                    available_times[timeSelectIndex - 1].Hours,
+                    available_times[timeSelectIndex - 1].Minutes,
+                    0
+                );
+
+                //
+                // Table Checking
+                //
+
+                List<Storage.Table> SortedList = Storage.System.data.tables.OrderBy(o => o.size).ToList();
+
+                bool foundTable = false;
+                
+                foreach (Storage.Table table in SortedList) {
+                    if (foundTable) {
+                        break;
+                    }
+
+                    else if (table.size >= currentReservation.amountPeople) {
+                        bool timeAvailable = true;
+
+                        foreach(Storage.TableReservation tablereservation in table.reservations) {
+                            if (tablereservation.datetime == reservationDatetime) {
+                                timeAvailable = false;
+                            }
+                        }
+
+                        if (timeAvailable) {
+                            Storage.TableReservation newTable = new Storage.TableReservation();
+                            newTable.datetime = reservationDatetime;
+                            newTable.reservationId = currentReservation.id;
+                            table.reservations.Add(newTable);
+                            foundTable = true;
+                        }
+                    }
+                }
+
+                if (!foundTable){
+                    UISystem.Input.ReadString("Er zijn op het selecteerde moment geen plekken beschikbaar. (Druk op enter om verder te gaan)");
+                    page.Update();
+                }
+
+                selectedNew = true;
+                selectedDateTime = reservationDatetime;
+            }
+
+             // Sla de huidige gegevens op
+            Storage.System.SaveStorage();
+            
+            UISystem.Input.ReadString("Reservering is verplaatst naar nieuwe datum. (Druk op enter om verder te gaan)");
+            StartPage.Display();
+        }
     }
 }

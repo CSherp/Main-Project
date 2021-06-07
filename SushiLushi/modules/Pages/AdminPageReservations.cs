@@ -59,37 +59,13 @@ namespace SushiLushi {
             name = Console.ReadLine();
         
             page.Update();
+
             int aantal_mensen = UISystem.Input.ReadInt("Voer het aantal personen in:", 1, 5);
-            List<Storage.Table> SortedList = Storage.System.data.tables.OrderBy(o => o.size).ToList();
-            int reservationID = new Random().Next(100000, 999999);
-            bool foundTable = false;
-            foreach (Storage.Table table in SortedList){
-                if (!table.available){
-                    continue;
-                }
-                if (table.size >= aantal_mensen){
-                    table.available = false;
-                    table.reservationID = reservationID;
-                    foundTable = true;
-                    break;
-                }
-                else {
-                    continue;
-                }
-            }
-            if (!foundTable){
-                UISystem.Input.ReadString("Er zijn geen plekken beschikbaar. Druk op enter om terug te gaan naar het startscherm.");
-                StartPage.Display();
-            }
 
-
-
-            //
             //
             // Datum
             //
 
-            
             Console.Write("Vandaag is het ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             DateTime today = DateTime.Now;  
@@ -134,7 +110,55 @@ namespace SushiLushi {
             Console.Write("U hebt gekozen voor: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(available_dates[index_menu2].ToString("dddd") + " " + available_dates[index_menu2].Date.ToString("dd-MM") + " " + available_times[index_menu3 - 1].ToString(@"hh\:mm"));
-            Console.ResetColor();  
+            Console.ResetColor();
+
+            // voeg tijd en datum bij elkaar tot een datetime object
+            DateTime reservationDatetime = new DateTime(
+                available_dates[index_menu2].Year,
+                available_dates[index_menu2].Month,
+                available_dates[index_menu2].Day,
+                available_times[index_menu3 - 1].Hours,
+                available_times[index_menu3 - 1].Minutes,
+                0
+            );
+
+            //
+            // Table Checking
+            //
+            
+            int reservationID = new Random().Next(100000, 999999);
+
+            List<Storage.Table> SortedList = Storage.System.data.tables.OrderBy(o => o.size).ToList();
+            bool foundTable = false;
+            
+            foreach (Storage.Table table in SortedList) {
+                if (foundTable) {
+                    break;
+                }
+
+                else if (table.size >= aantal_mensen) {
+                    bool timeAvailable = true;
+
+                    foreach(Storage.TableReservation tablereservation in table.reservations) {
+                        if (tablereservation.datetime == reservationDatetime) {
+                            timeAvailable = false;
+                        }
+                    }
+
+                    if (timeAvailable) {
+                        Storage.TableReservation newTable = new Storage.TableReservation();
+                        newTable.datetime = reservationDatetime;
+                        newTable.reservationId = reservationID;
+                        table.reservations.Add(newTable);
+                        foundTable = true;
+                    }
+                }
+            }
+
+            if (!foundTable){
+                UISystem.Input.ReadString("Er zijn momenteel geen plekken beschikbaar. (Druk op enter om terug te gaan)");
+                AdminPageReservations.Display();
+            }
 
             //
             // Dieet opmerkingen
@@ -179,18 +203,6 @@ namespace SushiLushi {
 
                 people_notes[i] = Arr2[optie_menu - 1];
             }
-
-        
-
-            // voeg tijd en datum bij elkaar tot een datetime object
-            DateTime reservationDatetime = new DateTime(
-                available_dates[index_menu2].Year,
-                available_dates[index_menu2].Month,
-                available_dates[index_menu2].Day,
-                available_times[index_menu3 - 1].Hours,
-                available_times[index_menu3 - 1].Minutes,
-                0
-            );
 
             Storage.Reservation newReservation = new Storage.Reservation() {
                 guestAccount = true,

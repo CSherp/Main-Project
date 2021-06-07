@@ -21,357 +21,292 @@
   ],
   "reservations": [
     {
-      "id": 0,
-      "guestAccount": true,
-      "fullname": "donna volk",
-      "email": "donnavolk@gmail.com",
-      "username": "",
-      "amountPeople": 1,
-      "peopleNotes": [
-        "Veganistisch"
-      ],
-      "datetime": "2021-05-19T18:00:00"
-    },
-    {
-      "id": 856597,
-      "guestAccount": true,
-      "fullname": null,
-      "email": null,
-      "username": "",
+      "id": 446302,
+      "guestAccount": false,
+      "fullname": "",
+      "email": "",
+      "username": "donnavolk",
       "amountPeople": 2,
       "peopleNotes": [
         "Geen",
         "Geen"
       ],
-      "datetime": "2021-06-04T16:00:00"
+      "datetime": "2021-06-10T16:00:00"
     },
     {
-      "id": 293285,
-      "guestAccount": true,
-      "fullname": "Dejan",
-      "email": "1005271@hr.nl",
-      "username": "",
+      "id": 237803,
+      "guestAccount": false,
+      "fullname": "",
+      "email": "",
+      "username": "donnavolk",
       "amountPeople": 2,
       "peopleNotes": [
         "Geen",
         "Geen"
       ],
-      "datetime": "2021-06-04T13:00:00"
-    },
-    {
-      "id": 836161,
-      "guestAccount": true,
-      "fullname": "Hallo jij",
-      "email": "123@12.nl",
-      "username": "",
-      "amountPeople": 2,
-      "peopleNotes": [
-        "Geen",
-        "Geen"
-      ],
-      "datetime": "2021-06-09T13:00:00"
+      "datetime": "2021-06-10T16:00:00"
     }
   ],
   "tables": [
     {
       "id": 1,
       "size": 2,
-      "available": false,
-      "reservationID": 293285
+      "reservations": [
+        {
+          "reservationId": 446302,
+          "datetime": "2021-06-12T18:00:00"
+        }
+      ]
     },
     {
       "id": 2,
       "size": 2,
-      "available": false,
-      "reservationID": 426045
+      "reservations": [
+        {
+          "reservationId": 237803,
+          "datetime": "2021-06-10T16:00:00"
+        }
+      ]
     },
     {
       "id": 3,
       "size": 2,
-      "available": false,
-      "reservationID": 836161
+      "reservations": []
     },
     {
       "id": 4,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 5,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 6,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 7,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 8,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 9,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 10,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 11,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 12,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 13,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 14,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 15,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 16,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 17,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 18,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 19,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 20,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 21,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 22,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 23,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 24,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 25,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 26,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 27,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 28,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 29,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 30,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 31,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 32,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 33,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 34,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 35,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 36,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 37,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 38,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 39,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 40,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 41,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 42,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 43,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 44,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 45,
       "size": 6,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 46,
       "size": 8,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 47,
       "size": 8,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 48,
       "size": 8,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 49,
       "size": 8,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     },
     {
       "id": 50,
       "size": 8,
-      "available": true,
-      "reservationID": -1
+      "reservations": []
     }
   ]
 }

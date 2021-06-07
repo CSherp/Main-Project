@@ -7,6 +7,7 @@ namespace SushiLushi {
 
         public static void Display() {
             page.Update();
+
             Console.WriteLine("");
             // Wordt gevraagd om invoeren van email
             Console.WriteLine("Voer uw emailadres in:");
@@ -50,6 +51,7 @@ namespace SushiLushi {
             Console.WriteLine("LET OP: hoofdletter gevoelig");
             Console.ResetColor();
             var username = Console.ReadLine();
+
             while(!RegisterPage.Check(username)){
                 page.Update();
                 Console.WriteLine("Deze gebruikersnaam is al in gebruik. Probeer nogmaals: ");
@@ -85,7 +87,6 @@ namespace SushiLushi {
                 var regexChar = new Regex("[^a-zA-Z0-9]+");
                 var regexDigit = new Regex("[0-9]");
                 //string[] digitarray = ;
-
 
                 while(password.Length < 8){
                     Console.ForegroundColor = ConsoleColor.Yellow;
