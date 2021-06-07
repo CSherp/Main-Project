@@ -10,6 +10,7 @@ namespace SushiLushi {
             var menu = new UISystem.Menu()
                 .Add("Gebruikers weergeven", listAllUsers)
                 .Add("Gebruiker toevoegen", AddUser)
+                .Add("Gebruiker aanpassen", change)
                 .Add("Gebruiker verwijderen", RemoveUser)
                 .Add("Terug naar start", StartPage.Display);
 
@@ -23,16 +24,21 @@ namespace SushiLushi {
             int index = 1;
             foreach (Storage.User user in Storage.System.data.users) {
                 System.Console.ForegroundColor = System.ConsoleColor.Cyan;
+                System.Console.WriteLine("");
                 System.Console.Write("[" + index + "] ");
                 System.Console.ForegroundColor = System.ConsoleColor.Gray;
-                System.Console.Write(user.username + " - " + user.email);
-                System.Console.Write("\n");
+                System.Console.WriteLine("Username: " + user.username);
+                System.Console.WriteLine("    Email: " + user.email);
                 index++;
             }
+            System.Console.WriteLine("");
             UISystem.Input.ReadString("\n(Druk op enter om verder te gaan)");
             Display();
         }
 
+        private static void change(){
+
+        }
         private static void AddUser() {
             page.Update();
             Console.WriteLine("");
@@ -206,15 +212,78 @@ namespace SushiLushi {
             Storage.System.SaveStorage();
             page.Update();
             if (echte_index == 0) {
-                UISystem.Input.ReadString("\nU bent geregisteerd als admin! (klik op enter om door te gaan)");
+                UISystem.Input.ReadString("\nU heeft succesvol een nieuwe admin geregistreerd!  (klik op enter om door te gaan)");
             } else {
-                UISystem.Input.ReadString("\nU bent geregisteerd als gebruiker! (klik op enter om door te gaan)");
+                UISystem.Input.ReadString("\nU heeft succesvol een nieuwe gebruiker geregistreerd! (klik op enter om door te gaan)");
             }
             
             StartPage.Display();
         }
         private static void RemoveUser() {
+                while(true){
+                page.Update();
+                UISystem.Output.WriteLine(System.ConsoleColor.Cyan, "\nDit zijn alle reserveringen in het systeem:");
+                int index = 1;
+                foreach (Storage.User user in Storage.System.data.users) {
+                System.Console.ForegroundColor = System.ConsoleColor.Cyan;
+                System.Console.WriteLine("");
+                System.Console.ForegroundColor = System.ConsoleColor.Cyan;
+                System.Console.Write("[" + index + "] ");
+                Console.ResetColor();
+                System.Console.WriteLine("Username: " + user.username);
+                System.Console.WriteLine("    Email: " + user.email);
+                index++;
+                }
+                System.Console.ForegroundColor = System.ConsoleColor.Cyan;
+                Console.WriteLine("");
+                System.Console.Write("[" + index + "] ");
+                UISystem.Output.WriteLine(ConsoleColor.White, "Terug naar vorige pagina\n");
+                index = index+1;
+                Console.Write("Selecteer een keuze: ");
+                int n = Convert.ToInt32(Console.ReadLine());
+                while(n < 1 || n >= index){
+                    Console.Write($"Selecteer een keuze (1 t/m {index-1}): ");
+                    n = Convert.ToInt32(Console.ReadLine());
+                }
 
+                if(n == (index-1))
+                    Display();
+                else if (n == 1){
+                    page.Update();
+                    System.Console.WriteLine("");
+                    System.Console.WriteLine("Username: " + Storage.System.data.users[n-1].username);
+                    System.Console.WriteLine("Email: " + Storage.System.data.users[n-1].email);
+                    System.Console.WriteLine("");
+
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    UISystem.Input.ReadString("\nDit account kan NIET worden verwijderd. Druk enter om verder te gaan");
+                    Console.ResetColor();
+                }
+                else{
+                    page.Update();
+                    System.Console.WriteLine("");
+                    System.Console.WriteLine("Username: " + Storage.System.data.users[n-1].username);
+                    System.Console.WriteLine("Email: " + Storage.System.data.users[n-1].email);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\nWeet u zeker dat u dit account wilt verwijderen y/n?");
+                    Console.ResetColor();
+                    var t = Console.ReadLine().ToLower();
+                    while(!(t == "y" || t == "n")){
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Weet u zeker dat u dit account wilt verwijderen y/n?");
+                        Console.ResetColor();
+                        t = Console.ReadLine().ToLower();
+                    }
+                    if(t == "y"){
+                        Storage.System.data.reservations.Remove(Storage.System.data.reservations[n-1]);
+                        Storage.System.SaveStorage();
+                        page.Update();
+                        UISystem.Input.ReadString("\nReservering succesvol verwijderd! (Druk op enter om verder te gaan)");
+                        Display();
+                        break;
+                    }
+                }
             } 
+        }
     }
 }

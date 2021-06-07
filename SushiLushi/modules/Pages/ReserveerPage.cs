@@ -78,7 +78,7 @@ namespace SushiLushi {
             menu2.Display();
 
             int index_menu2 = menu2.GetSelectedIndex(); 
-            Console.Write("Je hebt gekozen voor: ");
+            Console.Write("U hebt gekozen voor: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(available_dates[index_menu2 -1].ToString("dddd") + " " + available_dates[index_menu2 -1].Date.ToString("dd-MM"));
             Console.ResetColor();
@@ -100,7 +100,7 @@ namespace SushiLushi {
             
             int index_menu3 = menu3.GetSelectedIndex();
             page.Update();
-            Console.Write("Je hebt gekozen voor: ");
+            Console.Write("U hebt gekozen voor: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(available_dates[index_menu2].ToString("dddd") + " " + available_dates[index_menu2].Date.ToString("dd-MM") + " " + available_times[index_menu3 - 1].ToString(@"hh\:mm"));
             Console.ResetColor();  
@@ -116,7 +116,10 @@ namespace SushiLushi {
             for (int i = 0; i < aantal_mensen; i++) { 
                 Console.Write("Heeft u dieet wensen/ alergieën?");
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(" Persoon " + counter_mensen);
+                if (i == 0)
+                    Console.WriteLine(" Dieet wensen/ alergieën persoon " + counter_mensen);
+                else
+                    Console.WriteLine(" Persoon " + counter_mensen);
                 Console.ResetColor();  
 
                 var menu4 = new UISystem.Menu();
