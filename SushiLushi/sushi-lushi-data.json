@@ -17,21 +17,15 @@
       "email": "123@12.nl",
       "password": "Hallo123!4",
       "role": "user"
+    },
+    {
+      "username": "test",
+      "email": "test@gmail.com",
+      "password": "test1234!",
+      "role": "user"
     }
   ],
   "reservations": [
-    {
-      "id": 0,
-      "guestAccount": true,
-      "fullname": "donna volk",
-      "email": "donnavolk@gmail.com",
-      "username": "",
-      "amountPeople": 1,
-      "peopleNotes": [
-        "Veganistisch"
-      ],
-      "datetime": "2021-05-19T18:00:00"
-    },
     {
       "id": 856597,
       "guestAccount": true,
@@ -70,6 +64,33 @@
         "Geen"
       ],
       "datetime": "2021-06-09T13:00:00"
+    },
+    {
+      "id": 151010,
+      "guestAccount": false,
+      "fullname": "",
+      "email": "",
+      "username": "test",
+      "amountPeople": 3,
+      "peopleNotes": [
+        "Geen",
+        "Geen",
+        "Geen"
+      ],
+      "datetime": "2021-06-09T13:00:00"
+    },
+    {
+      "id": 231435,
+      "guestAccount": false,
+      "fullname": "",
+      "email": "",
+      "username": "donnavolk",
+      "amountPeople": 2,
+      "peopleNotes": [
+        "Geen",
+        "Geen"
+      ],
+      "datetime": "2021-06-09T13:00:00"
     }
   ],
   "tables": [
@@ -94,8 +115,8 @@
     {
       "id": 4,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "available": false,
+      "reservationID": 231435
     },
     {
       "id": 5,
@@ -136,8 +157,8 @@
     {
       "id": 11,
       "size": 4,
-      "available": true,
-      "reservationID": -1
+      "available": false,
+      "reservationID": 151010
     },
     {
       "id": 12,

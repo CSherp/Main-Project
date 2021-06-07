@@ -111,6 +111,7 @@ namespace SushiLushi {
             if (Storage.SushiLushiState.isLoggedIn && !Storage.SushiLushiState.isAdmin) {
                 menu.Add("Reserveren", ReserveerPage.Display);
                 menu.Add("Mijn reserveringen", listReservations);
+                menu.Add("Reserveringen verwijderen", ReserveerPage.RemoveUserReservations);
                 menu.Add("Menu bekijken", MenuList.Display);
                 menu.Add("Reglement COVID-19", Reglement.Display);
             }
