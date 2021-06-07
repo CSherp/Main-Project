@@ -10,6 +10,7 @@ namespace SushiLushi {
             var menu = new UISystem.Menu()
                 .Add("Gebruikers weergeven", listAllUsers)
                 .Add("Gebruiker toevoegen", AddUser)
+                .Add("Gebruiker aanpassen", change)
                 .Add("Gebruiker verwijderen", RemoveUser)
                 .Add("Terug naar start", StartPage.Display);
 
@@ -35,6 +36,9 @@ namespace SushiLushi {
             Display();
         }
 
+        private static void change(){
+
+        }
         private static void AddUser() {
             page.Update();
             Console.WriteLine("");
@@ -208,9 +212,9 @@ namespace SushiLushi {
             Storage.System.SaveStorage();
             page.Update();
             if (echte_index == 0) {
-                UISystem.Input.ReadString("\nU bent geregisteerd als admin! (klik op enter om door te gaan)");
+                UISystem.Input.ReadString("\nU heeft succesvol een nieuwe admin geregistreerd!  (klik op enter om door te gaan)");
             } else {
-                UISystem.Input.ReadString("\nU bent geregisteerd als gebruiker! (klik op enter om door te gaan)");
+                UISystem.Input.ReadString("\nU heeft succesvol een nieuwe gebruiker geregistreerd! (klik op enter om door te gaan)");
             }
             
             StartPage.Display();
@@ -261,12 +265,12 @@ namespace SushiLushi {
                     System.Console.WriteLine("Username: " + Storage.System.data.users[n-1].username);
                     System.Console.WriteLine("Email: " + Storage.System.data.users[n-1].email);
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("\nWeet u zeker dat u deze reservering wilt verwijderen y/n?");
+                    Console.WriteLine("\nWeet u zeker dat u dit account wilt verwijderen y/n?");
                     Console.ResetColor();
                     var t = Console.ReadLine().ToLower();
                     while(!(t == "y" || t == "n")){
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Weet u zeker dat u deze reservering wilt verwijderen y/n?");
+                        Console.WriteLine("Weet u zeker dat u dit account wilt verwijderen y/n?");
                         Console.ResetColor();
                         t = Console.ReadLine().ToLower();
                     }

@@ -11,6 +11,12 @@
       "email": "donnavolk2@gmail.com",
       "password": "Password1",
       "role": "user"
+    },
+    {
+      "username": "Hallo",
+      "email": "123@12.nl",
+      "password": "Hallo123!4",
+      "role": "user"
     }
   ],
   "reservations": [
@@ -51,6 +57,19 @@
         "Geen"
       ],
       "datetime": "2021-06-04T13:00:00"
+    },
+    {
+      "id": 836161,
+      "guestAccount": true,
+      "fullname": "Hallo jij",
+      "email": "123@12.nl",
+      "username": "",
+      "amountPeople": 2,
+      "peopleNotes": [
+        "Geen",
+        "Geen"
+      ],
+      "datetime": "2021-06-09T13:00:00"
     }
   ],
   "tables": [
@@ -63,14 +82,14 @@
     {
       "id": 2,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "available": false,
+      "reservationID": 426045
     },
     {
       "id": 3,
       "size": 2,
-      "available": true,
-      "reservationID": -1
+      "available": false,
+      "reservationID": 836161
     },
     {
       "id": 4,

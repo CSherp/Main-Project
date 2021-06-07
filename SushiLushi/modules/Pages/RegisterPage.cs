@@ -80,7 +80,7 @@ namespace SushiLushi {
             bool isNumber = false;
             bool isChar = false;
             while(isNumber == false || isChar == false){
-                var regexItem = new Regex("^[a-zA-Z0-9 ]*$");
+                var regexItem = new Regex("^[a-zA-Z0-9]*$");
                 while(password.Length < 8){
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("");
@@ -90,26 +90,24 @@ namespace SushiLushi {
                 }
 
                 for (int i = 0; i < password.Length; i++){
-                    if (!char.IsDigit(password[i]))
-                        isNumber = false;
-                    else
+                    if (char.IsDigit(password[i]))
                         isNumber = true;
+                        break;
                 }
 
                 for (int i = 0; i < password.Length; i++){
                     if (regexItem.IsMatch(password))
-                        isChar = false;
-                    else
                         isChar = true;
+                        break;
                 }
 
                 if(isNumber == false || isChar == false){
                     if(isNumber == false && isChar == false){
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("");
-                    Console.WriteLine("Wachtwoord bevat GEEN digit en GEEN speciale karakter. Probeer nogmaals:");
-                    Console.ResetColor();
-                    password = Console.ReadLine();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("");
+                        Console.WriteLine("Wachtwoord bevat GEEN digit en GEEN speciale karakter. Probeer nogmaals:");
+                        Console.ResetColor();
+                        password = Console.ReadLine();
                     }
                     else if(isNumber == false){
                         Console.ForegroundColor = ConsoleColor.Yellow;
