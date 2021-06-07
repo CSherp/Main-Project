@@ -132,7 +132,6 @@ namespace SushiLushi {
                 isChar = false;
                 var regexChar = new Regex("[^a-zA-Z0-9]+");
                 var regexDigit = new Regex("[0-9]");
-
                 while(password.Length < 8){
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("");
@@ -142,10 +141,9 @@ namespace SushiLushi {
                 }
 
 
-                if (regexDigit.IsMatch(password)){
+                if (regexDigit.IsMatch(password))
                     isNumber = true;
-                }
-
+         
                 if (regexChar.IsMatch(password))
                     isChar = true;
 
@@ -220,7 +218,7 @@ namespace SushiLushi {
         private static void RemoveUser() {
                 while(true){
                 page.Update();
-                UISystem.Output.WriteLine(System.ConsoleColor.Cyan, "\nDit zijn alle reserveringen in het systeem:");
+                UISystem.Output.WriteLine(System.ConsoleColor.Cyan, "\nDit zijn alle geregistreerde accounts in het systeem:");
                 int index = 1;
                 foreach (Storage.User user in Storage.System.data.users) {
                 System.Console.ForegroundColor = System.ConsoleColor.Cyan;
