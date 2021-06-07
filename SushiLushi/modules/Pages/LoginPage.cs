@@ -63,6 +63,11 @@ namespace SushiLushi {
                 PCheck = PassCheck(password);
             }
 
+            if (getUser(username, password) == null) {
+                UISystem.Input.ReadString("Wachtwoord of gebruikersnaam is verkeerd! (klik op enter om door te gaan)");
+                LoginPage.Display();
+            }
+
             if (NCheck == PCheck) {
                 // Login successvol! Zet de state
                 Storage.SushiLushiState.loggedUser = getUser(username, password);
